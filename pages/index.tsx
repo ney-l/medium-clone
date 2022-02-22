@@ -5,6 +5,7 @@ import { Header } from 'components/layout/Header'
 import Link from 'next/link'
 import { sanityClient, urlFor } from 'sanity'
 import { Post } from 'typings'
+import { PostCard } from 'components/posts/PostCard'
 
 interface Props {
   posts: [Post]
@@ -45,27 +46,11 @@ export default function Home({ posts }: Props) {
         <div className="grid grid-cols-1 gap-3 bg-white p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3">
           {posts.map((post) => (
             <Link key={post._id} href={`/posts/${post.slug.current}`}>
-              <div className="cursor-pointer rounded-lg border transition-transform duration-200 ease-in-out hover:scale-105">
-                <img
-                  className="h-60 w-full object-cover  "
-                  src={urlFor(post.mainImage).url()}
-                  alt="Post"
-                />
-                <div className="flex justify-between bg-white p-5">
-                  <div>
-                    <p className="font-serif text-lg font-bold">{post.title}</p>
-                    <p className="text-xs">
-                      {post.description} by {post.author.name}
-                    </p>
-                  </div>
-
-                  <img
-                    className="h-12 w-12 rounded-full"
-                    src={urlFor(post.author.image).url()}
-                    alt="Aut hor"
-                  />
-                </div>
-              </div>
+              <PostCard
+                imageUrl={urlFor(post.mainImage).url()}
+                authorImageUrl={urlFor(post.author.image).url()}
+                {...post}
+              />
             </Link>
           ))}
         </div>
