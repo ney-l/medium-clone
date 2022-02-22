@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 export function Header() {
   return (
-    <header className="mx-auto flex max-w-7xl justify-between p-5">
+    <header className="mx-auto flex max-w-7xl justify-between  p-1">
       <div className="flex items-center space-x-5">
         <Link href="/">
           <Image

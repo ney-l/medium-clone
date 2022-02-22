@@ -4,6 +4,11 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    fontFamily: {
+      sans: ['sohne', 'sans-serif'],
+
+      serif: ['gt-super'],
+    },
     extend: {},
   },
   plugins: [],

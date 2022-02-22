@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'gt-super';
+  src: url('../static/fonts/gt-super-400-normal.woff');
+}
+
+@font-face {
+  font-family: 'sohne';
+  src: url('../static/fonts/sohne-500-normal.woff');
+}
