@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="mx-auto flex max-w-7xl justify-between  p-1">
       <div className="flex items-center space-x-5">
-        <Link href="/">
+        <a href="/">
           <Image
             src="/medium-logo-full.png"
             alt="Medium Logo"
@@ -13,7 +13,7 @@ export function Header() {
             height={78}
             className="cursor-pointer object-contain"
           />
-        </Link>
+        </a>
         <div className="hidden items-center space-x-5 md:inline-flex">
           <Link href="/about">
             <a>About</a>
