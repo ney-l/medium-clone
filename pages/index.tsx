@@ -32,7 +32,7 @@ const Home: NextPage = () => {
           </div>
           <img
             className="hidden h-32 pt-3 md:inline-flex md:w-1/3 lg:h-full"
-            src="/static/images/banner.png"
+            src="/images/banner.png"
           />
         </div>
       </div>
