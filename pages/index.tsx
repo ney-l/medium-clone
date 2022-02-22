@@ -3,8 +3,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { Header } from 'components/layout/Header'
 import Link from 'next/link'
+import { sanityClient, urlFor } from 'sanity'
+import { Post } from 'typings'
 
-const Home: NextPage = () => {
+interface Props {
+  posts: [Post]
+}
+
+export default function Home({ posts }: Props) {
   return (
     <div className="mx-auto max-w-7xl bg-blue-200">
       <Head>
@@ -35,6 +41,34 @@ const Home: NextPage = () => {
             src="/images/banner.png"
           />
         </div>
+
+        <div className="grid grid-cols-1 gap-3 bg-white p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3">
+          {posts.map((post) => (
+            <Link key={post._id} href={`/posts/${post.slug.current}`}>
+              <div className="cursor-pointer rounded-lg border transition-transform duration-200 ease-in-out hover:scale-105">
+                <img
+                  className="h-60 w-full object-cover  "
+                  src={urlFor(post.mainImage).url()}
+                  alt="Post"
+                />
+                <div className="flex justify-between bg-white p-5">
+                  <div>
+                    <p className="font-serif text-lg font-bold">{post.title}</p>
+                    <p className="text-xs">
+                      {post.description} by {post.author.name}
+                    </p>
+                  </div>
+
+                  <img
+                    className="h-12 w-12 rounded-full"
+                    src={urlFor(post.author.image).url()}
+                    alt="Aut hor"
+                  />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
 
       <footer className="flex h-24 w-full items-center justify-center border-t bg-white">
@@ -51,4 +85,23 @@ const Home: NextPage = () => {
   )
 }
 
-export default Home
+export const getServerSideProps = async () => {
+  const query = `
+  *[_type == "post"] {
+      _id,
+      title,
+      slug,
+      description,
+      mainImage,
+      body,
+      author -> {
+      _id,
+      name,
+      image
+    }
+  }
+  `
+
+  const posts = await sanityClient.fetch(query)
+  return { props: { posts } }
+}
