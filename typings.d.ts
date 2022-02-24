@@ -20,3 +20,7 @@ export interface Post {
   }
   body: [object]
 }
+
+export interface IPostProps {
+  post: PostType
+}
