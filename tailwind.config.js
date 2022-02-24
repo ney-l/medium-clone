@@ -5,8 +5,7 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      sans: ['sohne', 'sans-serif'],
-
+      // sans: ['sohne', 'sans-serif'], // @todo: configure fonts
       serif: ['gt-super'],
     },
     extend: {},
