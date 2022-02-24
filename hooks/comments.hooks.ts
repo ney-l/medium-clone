@@ -33,9 +33,6 @@ export function useCreateComment(postId: string) {
     }
 
     alert(message)
-
-    console.log(e)
-
     target.reset()
   }
   return { isLoading, error, onSubmit: handleSubmit }
