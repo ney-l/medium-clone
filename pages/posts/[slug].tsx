@@ -1,17 +1,14 @@
 import { Header } from 'components/layout/Header'
 import { GetStaticProps } from 'next'
 import { sanityClient } from 'sanity'
-import { Post } from 'typings'
+import { IPostProps, Post as IPost } from 'typings'
+import { Post } from 'components/posts/Post'
 
-interface IProps {
-  post: Post
-}
-
-export default function PostPage({ post }: IProps) {
-  console.log(post)
+export default function PostPage({ post }: IPostProps) {
   return (
     <main>
       <Header />
+      <Post post={post} />
     </main>
   )
 }
@@ -27,7 +24,7 @@ export const getStaticPaths = async () => {
   `
 
   const posts = await sanityClient.fetch(query)
-  const paths = posts.map((post: Post) => ({
+  const paths = posts.map((post: IPost) => ({
     params: {
       slug: post.slug.current,
     },
