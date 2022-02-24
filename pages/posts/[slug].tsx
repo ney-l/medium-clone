@@ -1,29 +1,32 @@
 import { Header } from 'components/layout/Header'
 import { GetStaticProps } from 'next'
-import { sanityClient } from 'sanity'
 import { IPostProps, Post as IPost } from 'typings'
 import { Post } from 'components/posts/Post'
+import { useCreateComment } from 'hooks/comments.hooks'
+import { AddComment } from 'components/comments/AddComment'
+import { getPost, getPosts } from 'queries/posts'
 
 export default function PostPage({ post }: IPostProps) {
+  const { isLoading, error, onSubmit } = useCreateComment(post._id)
+
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    onSubmit(e)
+  }
+
   return (
     <main>
       <Header />
       <Post post={post} />
+      <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
+      <AddComment onSubmit={handleSubmit} error={error} isLoading={isLoading} />
     </main>
   )
 }
 
 export const getStaticPaths = async () => {
-  const query = `
-    *[_type == "post"] {
-      _id,
-      slug {
-        current
-      }
-    }
-  `
+  const posts = await getPosts()
 
-  const posts = await sanityClient.fetch(query)
   const paths = posts.map((post: IPost) => ({
     params: {
       slug: post.slug.current,
@@ -36,27 +39,12 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `
-    *[_type == "post" && slug.current == $slug][0] {
-      _id,
-      _createdAt,
-      title,
-      author-> {
-        name,
-        image
-      },
-      description,
-      mainImage,
-      slug,
-      body
-    }
-  `
-
-  const post = await sanityClient.fetch(query, {
-    slug: params?.slug,
-  })
-
+export const getStaticProps: GetStaticProps = async ({
+  params,
+}: {
+  params: { slug: string }
+}) => {
+  const post = await getPost(params?.slug)
   if (!post) {
     return {
       notFound: true, // nextjs returns a 404 page
