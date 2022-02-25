@@ -1,7 +1,15 @@
+export interface IMainImage {
+  _type: string
+  asset: {
+    _ref: string
+    _type: string
+  }
+}
+
 interface IAuthor {
   _id: string
   name: string
-  image: string
+  image: IMainImage
 }
 
 export interface IPost {
@@ -14,11 +22,7 @@ export interface IPost {
   slug: {
     current: string
   }
-  mainImage: {
-    asset: {
-      url: string
-    }
-  }
+  mainImage: IMainImage
   body: [object]
 }
 

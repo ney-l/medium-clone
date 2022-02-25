@@ -1,6 +1,7 @@
 import sanityClient from '@sanity/client'
 import { createClient, createCurrentUserHook } from 'next-sanity'
 import createImageUrlBuilder from '@sanity/image-url'
+import { IMainImage } from '@/typings'
 
 export const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
@@ -24,18 +25,11 @@ export const cmsClient = sanityClient({
  */
 export const nextCmsClient = createClient(config)
 
-interface ISource {
-  _type: string
-  asset: {
-    _ref: string
-    _type: string
-  }
-}
 /**
  * Set up a helper function for generating Image URLs
  * with only the asset reference data in the document
  */
-export const urlFor = (source: ISource) =>
+export const urlFor = (source: IMainImage) =>
   createImageUrlBuilder(config).image(source).url()
 
 /**
