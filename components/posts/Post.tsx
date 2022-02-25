@@ -7,7 +7,7 @@ export function Post({ post }: IPostProps) {
     <>
       <img
         className="h-40 w-full object-cover"
-        src={urlFor(post.mainImage).url()}
+        src={urlFor(post.mainImage)}
         alt={post.title}
       />
       <article className="mx-auto max-w-3xl p-5">
@@ -17,7 +17,7 @@ export function Post({ post }: IPostProps) {
         <div className="flex items-center space-x-2">
           <img
             className="h-10 w-10 rounded-full"
-            src={urlFor(post.author.image).url()}
+            src={urlFor(post.author.image)}
             alt={post.author.name}
           />
           <p className="text-sm font-extralight">

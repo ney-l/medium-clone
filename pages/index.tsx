@@ -27,8 +27,8 @@ export default function Home({ posts }: Props) {
           {posts.map((post) => (
             <Link key={post._id} href={`/posts/${post.slug.current}`}>
               <PostCard
-                imageUrl={urlFor(post.mainImage).url()}
-                authorImageUrl={urlFor(post.author.image).url()}
+                imageUrl={urlFor(post.mainImage)}
+                authorImageUrl={urlFor(post.author.image)}
                 {...post}
               />
             </Link>
