@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { PostCard } from '@/components/posts/PostCard'
-import { IPosts } from 'typings'
+import { IPosts } from '@/typings'
 import { urlFor } from 'sanity'
 
 export function Posts({ posts }: IPosts) {

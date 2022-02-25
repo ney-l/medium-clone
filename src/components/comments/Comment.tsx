@@ -1,4 +1,4 @@
-import { IComment } from 'typings'
+import { IComment } from '@/typings'
 
 interface ICommentProps {
   comment: IComment

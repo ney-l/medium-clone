@@ -1,6 +1,6 @@
 import PortableText from 'react-portable-text'
 import { urlFor } from 'sanity'
-import { IPostProps } from 'typings'
+import { IPostProps } from '@/typings'
 
 export function Post({ post }: IPostProps) {
   return (

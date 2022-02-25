@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { sanityClient } from 'sanity'
 
-import { IPosts } from 'typings'
+import { IPosts } from '@/typings'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Banner } from '@/components/layout/Banner'

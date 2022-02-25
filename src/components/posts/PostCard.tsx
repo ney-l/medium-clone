@@ -1,4 +1,4 @@
-import { IPost } from 'typings'
+import { IPost } from '@/typings'
 
 interface PostCardProps extends IPost {
   imageUrl: string
