@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import { Header } from 'components/layout/Header'
-import Link from 'next/link'
-import { sanityClient, urlFor } from 'sanity'
+import { sanityClient } from 'sanity'
+
 import { Post } from 'typings'
-import { PostCard } from 'components/posts/PostCard'
+import { Header } from 'components/layout/Header'
 import { Footer } from 'components/layout/Footer'
 import { Banner } from 'components/layout/Banner'
+import { Posts } from 'components/posts/Posts'
 
 interface Props {
   posts: [Post]
@@ -23,17 +23,7 @@ export default function Home({ posts }: Props) {
         <Header />
         <Banner />
 
-        <div className="grid grid-cols-1 gap-3 bg-white p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3">
-          {posts.map((post) => (
-            <Link key={post._id} href={`/posts/${post.slug.current}`}>
-              <PostCard
-                imageUrl={urlFor(post.mainImage)}
-                authorImageUrl={urlFor(post.author.image)}
-                {...post}
-              />
-            </Link>
-          ))}
-        </div>
+        <Posts posts={posts} />
       </div>
 
       <Footer />
