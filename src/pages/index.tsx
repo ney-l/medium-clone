@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import { nextCmsClient } from '@/config/cms'
 
 import { IPosts } from '@/typings'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Banner } from '@/components/layout/Banner'
 import { Posts } from '@/components/posts/Posts'
+import { getPostsData } from '@/queries/posts'
 
 export default function Home({ posts }: IPosts) {
   return (
@@ -27,22 +27,6 @@ export default function Home({ posts }: IPosts) {
 }
 
 export const getServerSideProps = async () => {
-  const query = `
-  *[_type == "post"] {
-      _id,
-      title,
-      slug,
-      description,
-      mainImage,
-      body,
-      author -> {
-      _id,
-      name,
-      image
-    }
-  }
-  `
-
-  const posts = await nextCmsClient.fetch(query)
+  const posts = await getPostsData()
   return { props: { posts } }
 }

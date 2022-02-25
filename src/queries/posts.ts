@@ -42,3 +42,23 @@ export async function getPosts() {
 
   return posts
 }
+
+export async function getPostsData() {
+  const query = `
+  *[_type == "post"] {
+      _id,
+      title,
+      slug,
+      description,
+      mainImage,
+      body,
+      author -> {
+      _id,
+      name,
+      image
+    }
+  }
+  `
+  const posts = await nextCmsClient.fetch(query)
+  return posts
+}
