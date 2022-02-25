@@ -13,7 +13,6 @@ export default function Home({ posts }: IPosts) {
     <div className="mx-auto max-w-7xl bg-blue-200">
       <Head>
         <title>Medium Clone - Where good ideas find you.</title>
-        <Favicon />
       </Head>
 
       <div>
