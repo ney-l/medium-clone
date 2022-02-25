@@ -4,7 +4,7 @@ import { IPostProps, IPost } from '@/typings'
 import { Post } from '@/components/posts/Post'
 import { useCreateComment } from '@/hooks/comments.hooks'
 import { AddComment } from '@/components/comments/AddComment'
-import { getPost, getPosts } from '@/queries/posts'
+import { getPost, getPostSlugs } from '@/queries/posts'
 import { Comments } from '@/components/comments/Comments'
 
 export default function PostPage({ post }: IPostProps) {
@@ -46,7 +46,7 @@ export default function PostPage({ post }: IPostProps) {
 }
 
 export const getStaticPaths = async () => {
-  const posts = await getPosts()
+  const posts = await getPostSlugs()
 
   const paths = posts.map((post: IPost) => ({
     params: {

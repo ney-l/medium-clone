@@ -29,10 +29,9 @@ export async function getPost(slug: string) {
   return post
 }
 
-export async function getPosts() {
+export async function getPostSlugs() {
   const query = `
     *[_type == "post"] {
-      _id,
       slug {
         current
       }
@@ -43,7 +42,7 @@ export async function getPosts() {
   return posts
 }
 
-export async function getPostsData() {
+export async function getPosts() {
   const query = `
   *[_type == "post"] {
       _id,
