@@ -22,3 +22,5 @@ Medium Clone
 - Use absolute imports by configuring path aliases to avoid `../../../../../` nightmare
 - Favicon support keeping the operating system in mind that display it differently.
 - Sensible folder structure
+- Commit often
+- Write good commit messages
