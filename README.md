@@ -24,3 +24,4 @@ Medium Clone
 - Sensible folder structure
 - Commit often
 - Write good commit messages
+- Environment variables used to configure environments and to protect secrets
