@@ -1,10 +1,8 @@
 import Head from 'next/head'
 
 import { IPosts } from '@/typings'
-import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
-import { Banner } from '@/components/layout/Banner'
-import { Posts } from '@/components/posts/Posts'
+import { Header, Footer, Banner } from '@/components/layout'
+import { Posts } from '@/components/posts'
 import { getPosts } from '@/queries/posts'
 
 export default function Home({ posts }: IPosts) {

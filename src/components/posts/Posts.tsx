@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { PostCard } from '@/components/posts/PostCard'
+import { PostCard } from '@/components/posts'
 import { IPosts } from '@/typings'
 import { urlFor } from '@/config/cms'
 
