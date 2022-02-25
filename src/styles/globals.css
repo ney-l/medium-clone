@@ -4,10 +4,10 @@
 
 @font-face {
   font-family: 'gt-super';
-  src: url('../public/fonts/gt-super-400-normal.woff');
+  src: url('../../public/fonts/gt-super-400-normal.woff');
 }
 
 @font-face {
   font-family: 'sohne';
-  src: url('../public/fonts/sohne-500-normal.woff');
+  src: url('../../public/fonts/sohne-500-normal.woff');
 }
