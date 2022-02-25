@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { sanityClient, urlFor } from 'sanity'
 import { Post } from 'typings'
 import { PostCard } from 'components/posts/PostCard'
+import { Footer } from 'components/layout/Footer'
 
 interface Props {
   posts: [Post]
@@ -54,16 +55,7 @@ export default function Home({ posts }: Props) {
         </div>
       </div>
 
-      <footer className="flex h-24 w-full items-center justify-center border-t bg-white">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://github.com/ney-l"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Built By Neha Lanjewar
-        </a>
-      </footer>
+      <Footer />
     </div>
   )
 }
