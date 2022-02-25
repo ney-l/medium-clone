@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { sanityClient } from 'sanity'
+import { sanityClient } from '@/config/sanity'
 
 import { IPosts } from '@/typings'
 import { Header } from '@/components/layout/Header'

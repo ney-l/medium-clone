@@ -1,6 +1,6 @@
 import sanityClient from '@sanity/client'
 
-import { config } from 'sanity'
+import { config } from '@/config/sanity'
 
 export const cmsClient = sanityClient({
   ...config,

@@ -1,4 +1,4 @@
-import { sanityClient } from 'sanity'
+import { sanityClient } from '@/config/sanity'
 
 export async function getPost(slug: string) {
   const query = `
