@@ -9,6 +9,7 @@ export interface Post {
   _createdAt: string
   title: string
   author: Author
+  comments: Comment[]
   description: string
   slug: {
     current: string
@@ -23,4 +24,16 @@ export interface Post {
 
 export interface IPostProps {
   post: PostType
+}
+
+export interface Comment {
+  approved: boolean
+  comment: string
+  email: string
+  name: string
+  post: {
+    _ref: string
+  }
+  _id: string
+  _updatedAt: string
 }
