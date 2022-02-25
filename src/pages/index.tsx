@@ -5,7 +5,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { Banner } from '@/components/layout/Banner'
 import { Posts } from '@/components/posts/Posts'
-import { getPostsData } from '@/queries/posts'
+import { getPosts } from '@/queries/posts'
 
 export default function Home({ posts }: IPosts) {
   return (
@@ -27,6 +27,6 @@ export default function Home({ posts }: IPosts) {
 }
 
 export const getServerSideProps = async () => {
-  const posts = await getPostsData()
+  const posts = await getPosts()
   return { props: { posts } }
 }
