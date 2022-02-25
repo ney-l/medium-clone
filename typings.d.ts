@@ -26,6 +26,10 @@ export interface IPostProps {
   post: Post
 }
 
+export interface IPosts {
+  posts: Post[]
+}
+
 export interface IComment {
   approved: boolean
   comment: string

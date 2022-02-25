@@ -1,17 +1,13 @@
 import Head from 'next/head'
 import { sanityClient } from 'sanity'
 
-import { Post } from 'typings'
+import { IPosts } from 'typings'
 import { Header } from 'components/layout/Header'
 import { Footer } from 'components/layout/Footer'
 import { Banner } from 'components/layout/Banner'
 import { Posts } from 'components/posts/Posts'
 
-interface Props {
-  posts: [Post]
-}
-
-export default function Home({ posts }: Props) {
+export default function Home({ posts }: IPosts) {
   return (
     <div className="mx-auto max-w-7xl bg-blue-200">
       <Head>
