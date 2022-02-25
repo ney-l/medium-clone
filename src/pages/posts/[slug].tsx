@@ -4,7 +4,7 @@ import { IPostProps, IPost } from 'typings'
 import { Post } from 'src/components/posts/Post'
 import { useCreateComment } from 'hooks/comments.hooks'
 import { AddComment } from 'src/components/comments/AddComment'
-import { getPost, getPosts } from 'queries/posts'
+import { getPost, getPosts } from 'src/queries/posts'
 import { Comments } from 'src/components/comments/Comments'
 
 export default function PostPage({ post }: IPostProps) {
