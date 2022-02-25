@@ -4,7 +4,7 @@ interface Author {
   image: string
 }
 
-export interface Post {
+export interface IPost {
   _id: string
   _createdAt: string
   title: string
@@ -23,11 +23,11 @@ export interface Post {
 }
 
 export interface IPostProps {
-  post: Post
+  post: IPost
 }
 
 export interface IPosts {
-  posts: Post[]
+  posts: IPost[]
 }
 
 export interface IComment {

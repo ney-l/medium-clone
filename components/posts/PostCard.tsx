@@ -1,6 +1,6 @@
-import { Post } from 'typings'
+import { IPost } from 'typings'
 
-interface PostCardProps extends Post {
+interface PostCardProps extends IPost {
   imageUrl: string
   authorImageUrl: string
 }

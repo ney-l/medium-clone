@@ -1,6 +1,6 @@
 import { Header } from 'components/layout/Header'
 import { GetStaticProps } from 'next'
-import { IPostProps, Post as IPost } from 'typings'
+import { IPostProps, IPost } from 'typings'
 import { Post } from 'components/posts/Post'
 import { useCreateComment } from 'hooks/comments.hooks'
 import { AddComment } from 'components/comments/AddComment'
