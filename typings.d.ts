@@ -9,7 +9,7 @@ export interface Post {
   _createdAt: string
   title: string
   author: Author
-  comments: Comment[]
+  comments: IComment[]
   description: string
   slug: {
     current: string
