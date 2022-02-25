@@ -19,7 +19,7 @@ export default function Home({ posts }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="">
+      <div>
         <Header />
         <Banner />
 
