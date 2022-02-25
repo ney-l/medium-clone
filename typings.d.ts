@@ -26,7 +26,7 @@ export interface IPostProps {
   post: Post
 }
 
-export interface Comment {
+export interface IComment {
   approved: boolean
   comment: string
   email: string
