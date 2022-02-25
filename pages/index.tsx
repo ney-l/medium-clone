@@ -6,13 +6,14 @@ import { Header } from 'components/layout/Header'
 import { Footer } from 'components/layout/Footer'
 import { Banner } from 'components/layout/Banner'
 import { Posts } from 'components/posts/Posts'
+import { Favicon } from 'components/layout/Favicon'
 
 export default function Home({ posts }: IPosts) {
   return (
     <div className="mx-auto max-w-7xl bg-blue-200">
       <Head>
-        <title>Medium Clone</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Medium Clone - Where good ideas find you.</title>
+        <Favicon />
       </Head>
 
       <div>
