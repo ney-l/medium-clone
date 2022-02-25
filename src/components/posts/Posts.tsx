@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { PostCard } from 'components/posts/PostCard'
+import { PostCard } from 'src/components/posts/PostCard'
 import { IPosts } from 'typings'
 import { urlFor } from 'sanity'
 
