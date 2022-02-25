@@ -1,5 +1,5 @@
-import { cmsClient } from 'src/config/cms'
-import { logError } from 'src/utils/log'
+import { cmsClient } from '@/config/cms'
+import { logError } from '@/utils/log'
 
 interface ICommentRequest {
   _id: string

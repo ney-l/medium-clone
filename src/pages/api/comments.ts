@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { createComment } from 'src/queries/comments'
+import { createComment } from '@/queries/comments'
 
 type Data = {
   message: string
