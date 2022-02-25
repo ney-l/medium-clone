@@ -1,4 +1,4 @@
-import { sanityClient } from '@/config/sanity'
+import { nextCmsClient } from '@/config/cms'
 
 export async function getPost(slug: string) {
   const query = `
@@ -22,7 +22,7 @@ export async function getPost(slug: string) {
   }
 `
 
-  const post = await sanityClient.fetch(query, {
+  const post = await nextCmsClient.fetch(query, {
     slug,
   })
 
@@ -38,7 +38,7 @@ export async function getPosts() {
       }
     }
   `
-  const posts = await sanityClient.fetch(query)
+  const posts = await nextCmsClient.fetch(query)
 
   return posts
 }

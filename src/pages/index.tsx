@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { sanityClient } from '@/config/sanity'
+import { nextCmsClient } from '@/config/cms'
 
 import { IPosts } from '@/typings'
 import { Header } from '@/components/layout/Header'
@@ -43,6 +43,6 @@ export const getServerSideProps = async () => {
   }
   `
 
-  const posts = await sanityClient.fetch(query)
+  const posts = await nextCmsClient.fetch(query)
   return { props: { posts } }
 }

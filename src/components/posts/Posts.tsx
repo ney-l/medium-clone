@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { PostCard } from '@/components/posts/PostCard'
 import { IPosts } from '@/typings'
-import { urlFor } from '@/config/sanity'
+import { urlFor } from '@/config/cms'
 
 export function Posts({ posts }: IPosts) {
   return (

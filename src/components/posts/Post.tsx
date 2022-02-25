@@ -1,5 +1,5 @@
 import PortableText from 'react-portable-text'
-import { urlFor } from '@/config/sanity'
+import { urlFor } from '@/config/cms'
 import { IPostProps } from '@/typings'
 
 export function Post({ post }: IPostProps) {
