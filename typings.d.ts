@@ -1,4 +1,4 @@
-interface Author {
+interface IAuthor {
   _id: string
   name: string
   image: string
@@ -8,7 +8,7 @@ export interface IPost {
   _id: string
   _createdAt: string
   title: string
-  author: Author
+  author: IAuthor
   comments: IComment[]
   description: string
   slug: {
