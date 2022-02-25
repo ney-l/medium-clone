@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+
 import { createComment } from '@/queries/comments'
 
 type Data = {
