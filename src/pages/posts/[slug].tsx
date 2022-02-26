@@ -7,6 +7,7 @@ import { useCreateComment } from '@/hooks/comments.hooks'
 import { AddComment, Comments } from '@/components/comments'
 import { getPost, getPostSlugs } from '@/queries/posts'
 import Head from 'next/head'
+import { SubmitConfirm } from '@/components/comments/SubmitConfirm'
 
 export default function PostPage({ post }: IPostProps) {
   const { isSuccess, isLoading, error, onSubmit } = useCreateComment(post._id)
@@ -26,12 +27,7 @@ export default function PostPage({ post }: IPostProps) {
         <Post post={post} />
         <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
         {isSuccess ? (
-          <div className="my-10 mx-auto flex max-w-2xl flex-col bg-yellow-500 py-10 text-center text-white">
-            <h3 className="font-bond text-3xl">
-              Thank you for submitting your comment!
-            </h3>
-            <p>Once it has been approved, it will appear below!</p>
-          </div>
+          <SubmitConfirm />
         ) : (
           <AddComment
             onSubmit={handleSubmit}
@@ -43,7 +39,6 @@ export default function PostPage({ post }: IPostProps) {
         <div className="my-10 mx-auto flex max-w-2xl flex-col space-y-2 p-10 shadow shadow-yellow-500">
           <h3 className="text-4xl">Comments</h3>
           <hr className="pb-2" />
-
           <Comments comments={post.comments} />
         </div>
       </main>
