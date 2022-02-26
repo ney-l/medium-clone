@@ -1,13 +1,13 @@
 import { GetStaticProps } from 'next'
-
-import { Header } from '@/components/layout'
-import { IPostProps, IPost, IPosts } from '@/typings'
-import { Post } from '@/components/posts'
-import { useCreateComment } from '@/hooks/comments.hooks'
-import { AddComment, Comments } from '@/components/comments'
-import { getPost, getPostSlugs } from '@/queries/posts'
 import Head from 'next/head'
+
+import { IPostProps, IPost, IPosts } from '@/typings'
+import { Header } from '@/components/layout'
+import { Post } from '@/components/posts'
+import { AddComment, Comments } from '@/components/comments'
 import { SubmitConfirm } from '@/components/comments/SubmitConfirm'
+import { getPost, getPostSlugs } from '@/queries/posts'
+import { useCreateComment } from '@/hooks/comments.hooks'
 
 export default function PostPage({ post }: IPostProps) {
   const { isSuccess, isLoading, error, onSubmit } = useCreateComment(post._id)
