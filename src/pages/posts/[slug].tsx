@@ -12,9 +12,9 @@ import { useCreateComment } from '@/hooks/comments.hooks'
 export default function PostPage({ post }: IPostProps) {
   const { isSuccess, isLoading, error, onSubmit } = useCreateComment(post._id)
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    onSubmit(e)
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    onSubmit(event)
   }
 
   return (
