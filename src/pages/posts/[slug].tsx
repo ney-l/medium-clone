@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 
 import { Header } from '@/components/layout'
-import { IPostProps, IPost } from '@/typings'
+import { IPostProps, IPost, IPosts } from '@/typings'
 import { Post } from '@/components/posts'
 import { useCreateComment } from '@/hooks/comments.hooks'
 import { AddComment, Comments } from '@/components/comments'
@@ -66,12 +66,11 @@ export const getStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-}: {
-  params: { slug: string }
-}) => {
-  const post = await getPost(params?.slug)
+export const getStaticProps: GetStaticProps = async (context) => {
+  const params = context.params!
+  const slug = params.slug as string
+
+  const post = (await getPost(slug)) as IPosts
   if (!post) {
     return {
       notFound: true, // nextjs returns a 404 page
