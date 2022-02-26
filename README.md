@@ -25,3 +25,12 @@ Medium Clone
 - Commit often
 - Write good commit messages
 - Environment variables used to configure environments and to protect secrets
+
+
+## How to run the code in development mode 
+- Clone the project repo
+- Create a `.env.local` file into the project home folder and make sure it has all the necessary environment variables. Refer to `.env.example` file for an example.
+- Change into the project directory and run `npm install`
+- Make sure Sanity CLI is installed.
+- Change into the cms directory instead the project and run `npm install`
+- To run the server run `npm run dev` from project home directory and `npm start` from `cms` directory
