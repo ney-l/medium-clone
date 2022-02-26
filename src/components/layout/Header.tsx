@@ -1,7 +1,11 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-export function Header() {
+interface IHeaderProps {
+  onSignupClick: Function
+}
+
+export function Header({ onSignupClick }: IHeaderProps) {
   return (
     <header className="mx-auto flex max-w-7xl justify-between  p-1">
       <div className="flex items-center space-x-5">
@@ -32,11 +36,9 @@ export function Header() {
         <Link href="/signin">
           <a>Sign In</a>
         </Link>
-        <Link href="/signup">
-          <a className="rounded-full border border-green-600 px-4 py-1">
-            Get Started
-          </a>
-        </Link>
+        <button className="rounded-full border border-green-600 px-4 py-1" onClick={() => onSignupClick()}>
+          Get Started
+        </button>
       </div>
     </header>
   )
