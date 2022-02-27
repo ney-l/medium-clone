@@ -15,20 +15,20 @@ export default function Home({ posts }: IPosts) {
     <>
       <Modal isShow={showSignup} onCloseClick={() => setShowSignup(false)} />
       {!showSignup && (
-        <div className="mx-auto max-w-7xl bg-blue-200">
+        <>
           <Head>
             <title>Medium Clone - Where good ideas find you.</title>
           </Head>
 
-          <div>
+          <>
             <Header onSignupClick={() => setShowSignup(true)} />
             <Banner />
 
             <Posts posts={posts} />
-          </div>
+          </>
 
           <Footer />
-        </div>
+        </>
       )}
     </>
   )
