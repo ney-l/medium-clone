@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 
-import { Signup } from '@/components/auth/Signup'
-import { CloseIcon } from '../icons/CloseIcon'
-import { Backdrop } from './Backdrop'
+import { CloseIcon } from '@/components/icons/CloseIcon'
+import { Backdrop } from '@/components/layout/Backdrop'
 
 const modal = {
   hidden: { opacity: 0, scale: 0.5 },
@@ -22,18 +21,19 @@ const modal = {
 interface IModalProps {
   isShow: Boolean
   onCloseClick: Function
+  children: JSX.Element | [JSX.Element]
 }
 
-export function Modal({ isShow, onCloseClick }: IModalProps) {
+export function Modal({ isShow, onCloseClick, children }: IModalProps) {
   return (
     <Backdrop isShow={isShow}>
-      <div className="absolute right-8 top-5">
-        <button onClick={() => onCloseClick()}>
-          <CloseIcon />
-        </button>
-      </div>
       <motion.div variants={modal}>
-        <Signup />
+        <div className="absolute right-8 top-5">
+          <button onClick={() => onCloseClick()}>
+            <CloseIcon />
+          </button>
+        </div>
+        {children}
       </motion.div>
     </Backdrop>
   )
