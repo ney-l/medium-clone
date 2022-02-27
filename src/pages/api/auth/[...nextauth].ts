@@ -27,4 +27,7 @@ export default NextAuth({
   jwt: {
     secret,
   },
+  pages: {
+    signIn: '/',
+  },
 })

@@ -33,7 +33,7 @@ export function Modal({ isShow, onCloseClick }: IModalProps) {
         </button>
       </div>
       <motion.div variants={modal}>
-        <Signup onClose={() => onCloseClick()} />
+        <Signup />
       </motion.div>
     </Backdrop>
   )

@@ -3,12 +3,12 @@ import { EmailIcon } from '../icons/EmailIcon'
 import { FacebookIcon } from '../icons/FacebookIcon'
 import { GoogleIcon } from '../icons/GoogleIcon'
 
-interface ISignupProps {
-  onClose: Function
+const PROVIDER_ID = {
+  GOOGLE: 'google',
 }
 
-export function Signup({ onClose }: ISignupProps) {
-  const handleSignIn = () => signIn()
+export function Signup() {
+  const handleSignIn = () => signIn(PROVIDER_ID.GOOGLE)
 
   return (
     <div className="rounded-md bg-white px-16 py-14 text-center">
