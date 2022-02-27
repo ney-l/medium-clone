@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import { Avatar } from '../_common/Avatar'
 
 interface IHeaderProps {
   onSignupClick: Function
@@ -36,13 +37,7 @@ export function Header({ onSignupClick }: IHeaderProps) {
         </div>
       </div>
       <div className="flex items-center space-x-5">
-        {session ? (
-          <img
-            className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
-            src={session?.user?.image}
-            alt=""
-          />
-        ) : (
+        {!session && (
           <>
             <Link href="/signin">
               <a className="text-green-600">Sign In</a>
@@ -55,6 +50,12 @@ export function Header({ onSignupClick }: IHeaderProps) {
             </button>
           </>
         )}
+
+        {session?.user ? (
+          <Avatar
+            user={{ image: session.user?.image, name: session.user?.name }}
+          />
+        ) : null}
       </div>
     </header>
   )
