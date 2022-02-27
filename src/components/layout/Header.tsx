@@ -53,9 +53,17 @@ export function Header({ onSignupClick }: IHeaderProps) {
           )}
 
           {session?.user ? (
-            <Avatar
-              user={{ image: session.user?.image, name: session.user?.name }}
-            />
+            <>
+              <Avatar
+                user={{ image: session.user?.image, name: session.user?.name }}
+              />
+              <button
+                className="rounded-full border  px-4 py-1"
+                onClick={() => signOut()}
+              >
+                Logout
+              </button>
+            </>
           ) : null}
         </div>
       </div>
