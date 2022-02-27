@@ -1,11 +1,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 interface IHeaderProps {
   onSignupClick: Function
 }
 
 export function Header({ onSignupClick }: IHeaderProps) {
+  const { data: session } = useSession()
+
   return (
     <header className="mx-auto flex max-w-7xl justify-between  p-1">
       <div className="flex items-center space-x-5">
@@ -32,13 +35,26 @@ export function Header({ onSignupClick }: IHeaderProps) {
           </Link>
         </div>
       </div>
-      <div className="flex items-center space-x-5 text-green-600">
-        <Link href="/signin">
-          <a>Sign In</a>
-        </Link>
-        <button className="rounded-full border border-green-600 px-4 py-1" onClick={() => onSignupClick()}>
-          Get Started
-        </button>
+      <div className="flex items-center space-x-5">
+        {session ? (
+          <img
+            className="inline-block h-12 w-12 rounded-full ring-2 ring-white"
+            src={session?.user?.image}
+            alt=""
+          />
+        ) : (
+          <>
+            <Link href="/signin">
+              <a className="text-green-600">Sign In</a>
+            </Link>
+            <button
+              className="rounded-full border border-green-600 px-4 py-1 text-green-600"
+              onClick={() => onSignupClick()}
+            >
+              Get Started
+            </button>
+          </>
+        )}
       </div>
     </header>
   )
