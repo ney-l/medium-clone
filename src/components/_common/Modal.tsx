@@ -27,14 +27,12 @@ interface IModalProps {
 export function Modal({ isShow, onCloseClick, children }: IModalProps) {
   return (
     <Backdrop isShow={isShow}>
-      <motion.div variants={modal}>
-        <div className="absolute right-8 top-5">
-          <button onClick={() => onCloseClick()}>
-            <CloseIcon />
-          </button>
-        </div>
-        {children}
-      </motion.div>
+      <div className="absolute right-8 top-5">
+        <button onClick={() => onCloseClick()}>
+          <CloseIcon />
+        </button>
+      </div>
+      <motion.div variants={modal}>{children}</motion.div>
     </Backdrop>
   )
 }
