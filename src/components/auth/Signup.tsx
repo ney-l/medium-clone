@@ -4,13 +4,15 @@ import { FacebookIcon } from '../icons/FacebookIcon'
 import { GoogleIcon } from '../icons/GoogleIcon'
 import { Modal } from '../_common/Modal'
 
-const PROVIDER_ID = {
-  GOOGLE: 'google',
+interface Provider {
+  id: 'google' | 'facebook'
+  name: string
 }
 
 interface ISignupProps {
   isShow: boolean
   onCloseClick: Function
+  providers: Provider[]
 }
 
 const Icons = {
@@ -19,9 +21,7 @@ const Icons = {
   email: <EmailIcon />,
 }
 
-export function Signup({ isShow, onCloseClick }: ISignupProps) {
-  const handleSignIn = () => signIn(PROVIDER_ID.GOOGLE)
-
+export function Signup({ isShow, onCloseClick, providers }: ISignupProps) {
   return (
     <Modal isShow={isShow} onCloseClick={onCloseClick}>
       <div className="rounded-md bg-white px-16 py-14 text-center">
@@ -29,21 +29,17 @@ export function Signup({ isShow, onCloseClick }: ISignupProps) {
           Join Medium.
         </h1>
         <div className="flex flex-col">
-          <button
-            className="my-2 rounded-full border border-green-600 px-4 py-3"
-            onClick={handleSignIn}
-          >
-            <span className="flex flex-row">
-              <span className="px-2">{Icons['google']}</span>
-              <span className="block">Sign up with Google</span>
-            </span>
-          </button>
-          <button className="my-2 rounded-full border border-green-600 px-4 py-3">
-            <span className="flex flex-row">
-              <span className="px-2">{Icons['facebook']}</span>
-              <span className="block">Sign up with Facebook</span>
-            </span>
-          </button>
+          {Object.values(providers)?.map((provider) => (
+            <button
+              className="my-2 rounded-full border border-green-600 px-4 py-3"
+              onClick={() => signIn(provider.id)}
+            >
+              <span className="flex flex-row">
+                <span className="px-2">{Icons[provider.id]}</span>
+                <span className="block">Sign up with {provider.name}</span>
+              </span>
+            </button>
+          ))}
           <button className="my-2 rounded-full border border-green-600 px-4 py-3">
             <span className="flex flex-row">
               <span className="px-2">{Icons['email']}</span>
