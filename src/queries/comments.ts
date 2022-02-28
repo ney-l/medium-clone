@@ -1,4 +1,4 @@
-import { cmsClient } from '@/config/cms'
+import { cmsClient } from '@/lib/cms'
 import { logError } from '@/utils/log'
 
 interface ICommentRequest {

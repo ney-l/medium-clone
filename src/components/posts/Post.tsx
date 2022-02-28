@@ -1,6 +1,6 @@
 import PortableText from 'react-portable-text'
 
-import { urlFor } from '@/config/cms'
+import { urlFor } from '@/lib/cms'
 import { IPostProps } from '@/typings'
 
 export function Post({ post }: IPostProps) {

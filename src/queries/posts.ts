@@ -1,4 +1,4 @@
-import { nextCmsClient } from '@/config/cms'
+import { nextCmsClient } from '@/lib/cms'
 
 export async function getPost(slug: string) {
   const query = `
