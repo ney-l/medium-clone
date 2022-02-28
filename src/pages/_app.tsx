@@ -19,6 +19,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
           <Signup
             isShow={isShowSignup}
             onCloseClick={() => setShowSignup(false)}
+            {...pageProps}
           />
         </>
       ) : (
