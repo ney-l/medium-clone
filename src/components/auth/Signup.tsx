@@ -13,6 +13,12 @@ interface ISignupProps {
   onCloseClick: Function
 }
 
+const Icons = {
+  google: <GoogleIcon />,
+  facebook: <FacebookIcon />,
+  email: <EmailIcon />,
+}
+
 export function Signup({ isShow, onCloseClick }: ISignupProps) {
   const handleSignIn = () => signIn(PROVIDER_ID.GOOGLE)
 
@@ -28,25 +34,19 @@ export function Signup({ isShow, onCloseClick }: ISignupProps) {
             onClick={handleSignIn}
           >
             <span className="flex flex-row">
-              <span className="px-2">
-                <GoogleIcon />
-              </span>
+              <span className="px-2">{Icons['google']}</span>
               <span className="block">Sign up with Google</span>
             </span>
           </button>
           <button className="my-2 rounded-full border border-green-600 px-4 py-3">
             <span className="flex flex-row">
-              <span className="px-2">
-                <FacebookIcon />
-              </span>
+              <span className="px-2">{Icons['facebook']}</span>
               <span className="block">Sign up with Facebook</span>
             </span>
           </button>
           <button className="my-2 rounded-full border border-green-600 px-4 py-3">
             <span className="flex flex-row">
-              <span className="px-2">
-                <EmailIcon />
-              </span>
+              <span className="px-2">{Icons['email']}</span>
               <span className="block">Sign up with email</span>
             </span>
           </button>
