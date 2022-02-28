@@ -29,7 +29,7 @@ export function Modal({ isShow, onCloseClick, children }: IModalProps) {
     <Backdrop isShow={isShow}>
       <motion.div
         variants={modal}
-        className="relative flex h-full w-full items-center justify-center bg-white drop-shadow-xl md:m-11 md:h-fit md:w-3/4 md:max-w-2xl md:p-11"
+        className="relative flex h-full w-full items-center justify-center bg-white drop-shadow-xl md:m-11 md:h-3/5 md:min-h-[800px] md:w-3/4 md:min-w-[700px] md:max-w-2xl md:p-11"
       >
         <button
           className="absolute  right-5 top-5"
