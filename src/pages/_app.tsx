@@ -1,11 +1,38 @@
+import { useState } from 'react'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
+
 import '@/styles/globals.css'
+import { Signup } from '@/components/auth/Signup'
+import { Footer, Header } from '@/components/layout'
 
 function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+  const [isShowSignup, setShowSignup] = useState(false)
+
+  const handleShowSignup = () => setShowSignup(true)
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      {isShowSignup ? (
+        <>
+          <title>Signup | Medium Clone</title>
+
+          <Signup
+            isShow={isShowSignup}
+            onCloseClick={() => setShowSignup(false)}
+          />
+        </>
+      ) : (
+        <>
+          <Header onSignupClick={handleShowSignup} />
+          <Component
+            {...pageProps}
+            isShowSignup={isShowSignup}
+            handleShowSignup={() => setShowSignup(true)}
+            handleHideSignup={() => setShowSignup(false)}
+          />
+          <Footer />
+        </>
+      )}
     </SessionProvider>
   )
 }

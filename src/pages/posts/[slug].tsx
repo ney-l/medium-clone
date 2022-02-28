@@ -2,7 +2,6 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import { IPostProps, IPost, IPosts } from '@/typings'
-import { Header } from '@/components/layout'
 import { Post } from '@/components/posts'
 import { AddComment, Comments } from '@/components/comments'
 import { SubmitConfirm } from '@/components/comments/SubmitConfirm'
@@ -23,7 +22,6 @@ export default function PostPage({ post }: IPostProps) {
         <title>{post.title} | Medium Clone</title>
       </Head>
       <main>
-        <Header />
         <Post post={post} />
         <hr className="my-5 mx-auto max-w-lg border border-yellow-500" />
         {isSuccess ? (
