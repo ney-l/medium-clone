@@ -12,28 +12,22 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const handleShowSignup = () => setShowSignup(true)
   return (
     <SessionProvider session={session}>
-      {isShowSignup ? (
-        <>
-          <title>Signup | Medium Clone</title>
-
-          <Signup
-            isShow={isShowSignup}
-            onCloseClick={() => setShowSignup(false)}
-            {...pageProps}
-          />
-        </>
-      ) : (
-        <>
-          <Header onSignupClick={handleShowSignup} />
-          <Component
-            {...pageProps}
-            isShowSignup={isShowSignup}
-            handleShowSignup={() => setShowSignup(true)}
-            handleHideSignup={() => setShowSignup(false)}
-          />
-          <Footer />
-        </>
+      {isShowSignup && (
+        <Signup
+          isShow={isShowSignup}
+          onCloseClick={() => setShowSignup(false)}
+          {...pageProps}
+        />
       )}
+
+      <Header onSignupClick={handleShowSignup} />
+      <Component
+        {...pageProps}
+        isShowSignup={isShowSignup}
+        handleShowSignup={() => setShowSignup(true)}
+        handleHideSignup={() => setShowSignup(false)}
+      />
+      <Footer />
     </SessionProvider>
   )
 }
