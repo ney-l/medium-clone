@@ -1,13 +1,10 @@
 import { signIn } from 'next-auth/react'
 
 export function EmailSignup(): JSX.Element {
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>): void {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
-    const target = e.target as typeof e.target & {
-      email: { value: string }
-    }
 
-    signIn('email', { email: target.email.value })
+    signIn('email', { email: e.currentTarget.email.value })
   }
 
   return (
