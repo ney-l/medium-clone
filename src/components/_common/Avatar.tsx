@@ -1,17 +1,15 @@
 interface IAvatar {
   user: {
     image: string | null | undefined
-    name: string | null | undefined
+    name: string | undefined
   }
 }
 
-function getInitials(name: string | null | undefined) {
+function getInitials(name = '') {
   return name
-    ? name
-        .split(' ')
-        .map((item) => item[0])
-        .join('')
-    : ''
+    .split(' ')
+    .map((item) => item[0])
+    .join('')
 }
 
 export function Avatar({ user }: IAvatar) {
@@ -36,7 +34,7 @@ export function Avatar({ user }: IAvatar) {
 
   return (
     <div className="relative m-1 mr-2 flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500 text-xl uppercase text-white">
-      {getInitials(name)}
+      {getInitials(name ?? '')}
     </div>
   )
 }
