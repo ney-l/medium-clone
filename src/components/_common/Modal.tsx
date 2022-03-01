@@ -20,7 +20,7 @@ const modal = {
 
 interface IModalProps {
   isShow: Boolean
-  onCloseClick: Function
+  onCloseClick: () => void
   children: JSX.Element | [JSX.Element]
 }
 

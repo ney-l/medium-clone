@@ -4,7 +4,7 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 import { Avatar } from '../_common/Avatar'
 
 interface IHeaderProps {
-  onSignupClick: Function
+  onSignupClick: () => void
 }
 
 export function Header({ onSignupClick }: IHeaderProps) {

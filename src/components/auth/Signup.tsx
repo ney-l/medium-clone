@@ -13,7 +13,7 @@ interface Provider {
 
 interface ISignupProps {
   isShow: boolean
-  onCloseClick: Function
+  onCloseClick: () => void
   providers: Provider[]
 }
 

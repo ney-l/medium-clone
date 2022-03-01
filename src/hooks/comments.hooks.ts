@@ -4,7 +4,7 @@ interface IFormFields {
   name: { value: string }
   email: { value: string }
   comment: { value: string }
-  reset: Function
+  reset: () => void
 }
 
 export function useCreateComment(postId: string) {
