@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 interface IBackdropProps {
   isShow: Boolean
-  children: JSX.Element | JSX.Element[]
+  children: React.ReactNode
 }
 
 export function Backdrop({ isShow, children }: IBackdropProps) {
