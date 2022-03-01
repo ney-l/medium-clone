@@ -23,10 +23,14 @@ const Icons = {
   email: <EmailIcon />,
 }
 
-export function Signup({ isShow, onCloseClick, providers }: ISignupProps) {
+export function Signup({
+  isShow,
+  onCloseClick,
+  providers,
+}: ISignupProps): JSX.Element {
   const [showEmailUi, setShowEmailUi] = useState(false)
 
-  async function handleSignIn(providerId: string) {
+  async function handleSignIn(providerId: Provider['id']): Promise<void> {
     if (providerId !== 'email') {
       signIn(providerId)
       return
