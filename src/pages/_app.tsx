@@ -6,7 +6,10 @@ import '@/styles/globals.css'
 import { Signup } from '@/components/auth/Signup'
 import { Footer, Header } from '@/components/layout'
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps): JSX.Element {
   const [isShowSignup, setShowSignup] = useState(false)
 
   const handleShowSignup = () => setShowSignup(true)

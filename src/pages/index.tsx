@@ -5,8 +5,9 @@ import { IPosts } from '@/typings'
 import { Banner } from '@/components/layout'
 import { Posts } from '@/components/posts'
 import { getPosts } from '@/queries/posts'
+import { GetServerSideProps } from 'next'
 
-export default function Home({ posts }: IPosts) {
+export default function Home({ posts }: IPosts): JSX.Element {
   return (
     <>
       <Head>
@@ -20,7 +21,7 @@ export default function Home({ posts }: IPosts) {
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const providers = await getProviders()
 
   const posts = await getPosts()

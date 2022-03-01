@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
-import { IPostProps, IPost, IPosts } from '@/typings'
+import { IPostProps, IPosts } from '@/typings'
 import { Post } from '@/components/posts'
 import { AddComment, Comments } from '@/components/comments'
 import { SubmitConfirm } from '@/components/comments/SubmitConfirm'
@@ -43,7 +43,7 @@ export default function PostPage({ post }: IPostProps) {
 export const getStaticPath: GetStaticPaths = async () => {
   const posts = await getPostSlugs()
 
-  const paths = posts.map((post: IPost) => ({
+  const paths = posts.map((post) => ({
     params: {
       slug: post.slug.current,
     },
