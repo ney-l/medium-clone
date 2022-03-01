@@ -24,7 +24,11 @@ interface IModalProps {
   children: JSX.Element | [JSX.Element]
 }
 
-export function Modal({ isShow, onCloseClick, children }: IModalProps) {
+export function Modal({
+  isShow,
+  onCloseClick,
+  children,
+}: IModalProps): JSX.Element {
   return (
     <Backdrop isShow={isShow}>
       <motion.div
