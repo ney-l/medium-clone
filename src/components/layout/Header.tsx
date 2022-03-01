@@ -8,7 +8,8 @@ interface IHeaderProps {
 }
 
 export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
+  const isAuthenticated = status === 'authenticated'
 
   return (
     <header className=" bg-blue-200 p-1">
@@ -38,7 +39,7 @@ export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
           </div>
         </div>
         <div className="flex items-center space-x-5">
-          {!session && (
+          {!isAuthenticated && (
             <>
               <Link href="/signin">
                 <a className="text-green-600">Sign In</a>
@@ -55,7 +56,10 @@ export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
           {session?.user ? (
             <>
               <Avatar
-                user={{ image: session.user?.image, name: session.user?.name }}
+                user={{
+                  image: session.user?.image,
+                  name: session.user?.name || '',
+                }}
               />
               <button
                 className="rounded-full border  px-4 py-1"
