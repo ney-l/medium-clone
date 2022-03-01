@@ -40,7 +40,7 @@ export default function PostPage({ post }: IPostProps) {
   )
 }
 
-export const getStaticPath: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getPostSlugs()
 
   const paths = posts.map((post) => ({
