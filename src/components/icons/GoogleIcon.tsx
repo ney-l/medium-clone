@@ -1,4 +1,4 @@
-export function GoogleIcon() {
+export function GoogleIcon(): JSX.Element {
   return (
     <svg width="25" height="25">
       <g fill="none" fillRule="evenodd">

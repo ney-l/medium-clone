@@ -7,7 +7,7 @@ interface IHeaderProps {
   onSignupClick: () => void
 }
 
-export function Header({ onSignupClick }: IHeaderProps) {
+export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
   const { data: session } = useSession()
 
   return (

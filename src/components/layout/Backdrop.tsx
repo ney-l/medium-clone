@@ -5,7 +5,7 @@ interface IBackdropProps {
   children: React.ReactNode
 }
 
-export function Backdrop({ isShow, children }: IBackdropProps) {
+export function Backdrop({ isShow, children }: IBackdropProps): JSX.Element {
   const classes = isShow
     ? `bg-white bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0`
     : ``

@@ -1,4 +1,4 @@
-export function Favicon() {
+export function Favicon(): JSX.Element {
   return (
     <>
       <link

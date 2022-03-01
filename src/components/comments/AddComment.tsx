@@ -4,7 +4,11 @@ interface IAddCommentProps {
   isLoading: boolean | undefined
 }
 
-export function AddComment({ onSubmit, error, isLoading }: IAddCommentProps) {
+export function AddComment({
+  onSubmit,
+  error,
+  isLoading,
+}: IAddCommentProps): JSX.Element {
   return (
     <form
       onSubmit={onSubmit}

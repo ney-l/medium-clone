@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export function Banner() {
+export function Banner(): JSX.Element {
   return (
     <div className="border-y  border-black bg-blue-200">
       <div className="mx-auto flex max-w-7xl items-center justify-between  py-10 lg:py-0">

@@ -1,4 +1,4 @@
-export function FacebookIcon() {
+export function FacebookIcon(): JSX.Element {
   return (
     <svg width="25" height="25" fill="#3B5998">
       <path

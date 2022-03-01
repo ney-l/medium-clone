@@ -4,7 +4,7 @@ import { urlFor } from '@/lib/cms'
 import { IPostProps } from '@/typings'
 import React from 'react'
 
-export function Post({ post }: IPostProps) {
+export function Post({ post }: IPostProps): JSX.Element {
   return (
     <>
       <img
