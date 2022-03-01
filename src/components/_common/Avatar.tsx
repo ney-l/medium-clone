@@ -5,14 +5,14 @@ interface IAvatar {
   }
 }
 
-function getInitials(name = '') {
+function getInitials(name = ''): string {
   return name
     .split(' ')
     .map((item) => item[0])
     .join('')
 }
 
-export function Avatar({ user }: IAvatar) {
+export function Avatar({ user }: IAvatar): JSX.Element {
   if (!user) {
     return (
       <div className="relative m-1 mr-2 flex h-12 w-12 items-center justify-center rounded-full bg-red-500 text-xl uppercase text-white">
