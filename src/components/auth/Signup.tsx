@@ -74,6 +74,7 @@ export function Signup({
             <>
               {Object.values(providers).map((provider) => (
                 <button
+                  key={provider.id}
                   className="my-2 rounded-full border border-gray-400 px-4 py-3 hover:border-gray-600"
                   onClick={() => handleSignIn(provider.id)}
                 >
