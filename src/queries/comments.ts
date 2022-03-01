@@ -13,7 +13,7 @@ export async function createComment({
   name,
   email,
   comment,
-}: ICommentRequest) {
+}: ICommentRequest): Promise<{ message: string | null }> {
   try {
     await cmsClient.create({
       _type: 'comment',
@@ -25,7 +25,7 @@ export async function createComment({
       email,
       comment,
     })
-    return { message: 'Comment added!' }
+    return Promise.resolve({ message: 'Comment added!' })
   } catch (err) {
     logError(err)
     return { message: null }

@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 
 import { IPostProps, IPost, IPosts } from '@/typings'
@@ -40,7 +40,7 @@ export default function PostPage({ post }: IPostProps) {
   )
 }
 
-export const getStaticPaths = async () => {
+export const getStaticPath: GetStaticPaths = async () => {
   const posts = await getPostSlugs()
 
   const paths = posts.map((post: IPost) => ({

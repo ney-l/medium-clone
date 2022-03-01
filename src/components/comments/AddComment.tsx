@@ -1,7 +1,7 @@
 interface IAddCommentProps {
   onSubmit: React.FormEventHandler<HTMLFormElement>
   error?: string
-  isLoading: boolean | undefined
+  isLoading?: boolean
 }
 
 export function AddComment({

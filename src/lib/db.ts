@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb'
 
 const uri = process.env.MONGODB_URI
 
-function getClientPromise() {
+function getClientPromise(): Promise<MongoClient> {
   if (!uri) {
     // 🚨 make a noise 🚨
     throw new Error(`ATTENTION!! Please add MONGO URI to environment variables`)

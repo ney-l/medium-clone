@@ -29,7 +29,7 @@ export const nextCmsClient = createClient(config)
  * Set up a helper function for generating Image URLs
  * with only the asset reference data in the document
  */
-export const urlFor = (source: IMainImage) =>
+export const urlFor = (source: IMainImage): string =>
   createImageUrlBuilder(config).image(source).url()
 
 /**
