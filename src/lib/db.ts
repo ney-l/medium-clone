@@ -1,10 +1,6 @@
 import { MongoClient } from 'mongodb'
 
 const uri = process.env.MONGODB_URI
-const options = {
-  useUnifiedTopology: true,
-  useNewUrlParser: true,
-}
 
 function getClientPromise() {
   if (!uri) {
@@ -12,9 +8,15 @@ function getClientPromise() {
     throw new Error(`ATTENTION!! Please add MONGO URI to environment variables`)
   }
 
-  return process.env.NODE_ENV === 'development' && global._mongoClientPromise
-    ? global._mongoClientPromise
-    : new MongoClient(uri, options)
+  const globalWithMongoClientPromise = global as typeof globalThis & {
+    _mongoClientPromise: Promise<MongoClient>
+  }
+
+  const mongoClientPromise = globalWithMongoClientPromise._mongoClientPromise
+
+  return process.env.NODE_ENV === 'development' && mongoClientPromise
+    ? mongoClientPromise
+    : new MongoClient(uri).connect()
 }
 
-export const db = getClientPromise().connect()
+export const db = getClientPromise()
