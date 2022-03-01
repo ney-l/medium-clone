@@ -7,7 +7,14 @@ interface IFormFields {
   reset: () => void
 }
 
-export function useCreateComment(postId: string) {
+interface ICreateCommentHook {
+  isLoading: boolean
+  isSuccess: boolean
+  error: string
+  onSubmit: React.FormEventHandler
+}
+
+export function useCreateComment(postId: string): ICreateCommentHook {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isSuccess, setIsSuccess] = useState<boolean>(false)
   const [error, setError] = useState<string>('')
