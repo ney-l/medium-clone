@@ -4,7 +4,7 @@ import { SessionProvider } from 'next-auth/react'
 
 import '@/styles/globals.css'
 import { Signup } from '@/components/auth/Signup'
-import { Footer, Header } from '@/components/layout'
+import { Footer, Header, PageLoadingBar } from '@/components/layout'
 
 function MyApp({
   Component,
@@ -15,6 +15,7 @@ function MyApp({
   const handleShowSignup = () => setShowSignup(true)
   return (
     <SessionProvider session={session}>
+      <PageLoadingBar />
       {isShowSignup && (
         <Signup
           isShow={isShowSignup}
