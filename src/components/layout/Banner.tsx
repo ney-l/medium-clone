@@ -15,7 +15,8 @@ export function Banner(): JSX.Element {
             It's easy and free to post your thinking on any topic and connect
             with millions of readers.
           </h2>
-          <Link href="signup">
+          {/* @todo implement Signin link here */}
+          <Link href="/">
             <a>Start Writing</a>
           </Link>
         </div>
