@@ -15,15 +15,17 @@ export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
     <header className=" bg-blue-200 p-1">
       <div className="mx-auto flex max-w-7xl justify-between">
         <div className="flex items-center space-x-5">
-          <a href="/">
-            <Image
-              src="/medium-logo-full.png"
-              alt="Medium Logo"
-              width={180}
-              height={78}
-              className="cursor-pointer object-contain"
-            />
-          </a>
+          <Link href="/">
+            <a>
+              <Image
+                src="/medium-logo-full.png"
+                alt="Medium Logo"
+                width={180}
+                height={78}
+                className="cursor-pointer object-contain"
+              />
+            </a>
+          </Link>
           <div className="hidden items-center space-x-5 md:inline-flex">
             <Link href="/about">
               <a>About</a>
