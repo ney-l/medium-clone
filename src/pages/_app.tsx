@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
-import { AnimatePresence } from 'framer-motion'
 
 import '@/styles/globals.css'
 import { Signup } from '@/components/auth/Signup'
@@ -16,25 +15,23 @@ function MyApp({
   const handleShowSignup = () => setShowSignup(true)
   return (
     <SessionProvider session={session}>
-      <AnimatePresence>
-        <PageLoadingBar />
-        {isShowSignup && (
-          <Signup
-            isShow={isShowSignup}
-            onCloseClick={() => setShowSignup(false)}
-            {...pageProps}
-          />
-        )}
-
-        <Header onSignupClick={handleShowSignup} />
-        <Component
+      <PageLoadingBar />
+      {isShowSignup && (
+        <Signup
+          isShow={isShowSignup}
+          onCloseClick={() => setShowSignup(false)}
           {...pageProps}
-          isShowSignup={isShowSignup}
-          handleShowSignup={() => setShowSignup(true)}
-          handleHideSignup={() => setShowSignup(false)}
         />
-        <Footer />
-      </AnimatePresence>
+      )}
+
+      <Header onSignupClick={handleShowSignup} />
+      <Component
+        {...pageProps}
+        isShowSignup={isShowSignup}
+        handleShowSignup={() => setShowSignup(true)}
+        handleHideSignup={() => setShowSignup(false)}
+      />
+      <Footer />
     </SessionProvider>
   )
 }

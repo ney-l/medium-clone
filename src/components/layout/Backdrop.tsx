@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 
 interface IBackdropProps {
   children: React.ReactNode
@@ -21,13 +22,15 @@ export function Backdrop({ children }: IBackdropProps): JSX.Element {
   }, [])
 
   return (
-    <motion.div
-      className={classes}
-      variants={backdrop}
-      initial="hidden"
-      animate="visible"
-    >
-      {children}
-    </motion.div>
+    <AnimatePresence>
+      <motion.div
+        className={classes}
+        variants={backdrop}
+        initial="hidden"
+        animate="visible"
+      >
+        {children}
+      </motion.div>
+    </AnimatePresence>
   )
 }
