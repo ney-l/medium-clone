@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 interface IBackdropProps {
   isShow: Boolean
@@ -14,6 +15,14 @@ export function Backdrop({ isShow, children }: IBackdropProps): JSX.Element {
     hidden: { opacity: 0, backgroundColor: 'transparent' },
     visible: { opacity: 1, backgroundColor: 'rgba(255, 255, 255, 0.95)' },
   }
+
+  useEffect(() => {
+    if (!isShow) {
+      document.body.classList.remove('overflow-hidden')
+    }
+
+    document.body.classList.add('overflow-hidden')
+  }, [isShow])
 
   return (
     <AnimatePresence>
