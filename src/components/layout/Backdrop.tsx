@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 interface IBackdropProps {
@@ -6,7 +6,10 @@ interface IBackdropProps {
   children: React.ReactNode
 }
 
-export function Backdrop({ isShow, children }: IBackdropProps): JSX.Element {
+export function Backdrop({
+  isShow,
+  children,
+}: IBackdropProps): JSX.Element | null {
   const classes = isShow
     ? `bg-white bg-opacity-50 flex justify-center items-center absolute top-0 right-0 bottom-0 left-0`
     : ``
@@ -17,25 +20,21 @@ export function Backdrop({ isShow, children }: IBackdropProps): JSX.Element {
   }
 
   useEffect(() => {
-    if (!isShow) {
+    if (isShow) {
+      document.body.classList.add('overflow-hidden')
+    } else {
       document.body.classList.remove('overflow-hidden')
     }
-
-    document.body.classList.add('overflow-hidden')
   }, [isShow])
 
-  return (
-    <AnimatePresence>
-      {isShow && (
-        <motion.div
-          className={classes}
-          variants={backdrop}
-          initial="hidden"
-          animate="visible"
-        >
-          {children}
-        </motion.div>
-      )}
-    </AnimatePresence>
-  )
+  return isShow ? (
+    <motion.div
+      className={classes}
+      variants={backdrop}
+      initial="hidden"
+      animate="visible"
+    >
+      {children}
+    </motion.div>
+  ) : null
 }
