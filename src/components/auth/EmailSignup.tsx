@@ -13,15 +13,21 @@ export function EmailSignup({
   setShowEmailUi: (show: boolean) => void
 }): JSX.Element {
   const [email, setEmail] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
     const email = e.currentTarget.email.value
 
+    setIsLoading(true)
+
     const { ok, error } = (await signIn('email', {
       email,
       redirect: false,
     })) as unknown as { ok: string; error: string }
+
+    setIsLoading(false)
+
     if (ok) {
       setShowCheckInboxUi(true)
       setEmail(email)
@@ -36,7 +42,7 @@ export function EmailSignup({
         <h1 className="mb-8 font-serif text-2xl font-bold text-black">
           Sign up with email
         </h1>
-        <h2 className="mb-16 text-xs font-extralight">
+        <h2 className="mb-16">
           Enter your email address to create an account.
         </h2>
         <div className="flex flex-col">
@@ -50,8 +56,9 @@ export function EmailSignup({
             />
 
             <button
-              className="my-2 block w-full rounded-full border bg-black py-2 text-center  text-sm  font-normal text-white"
+              className="my-2 block w-full rounded-full border bg-black py-3 text-center  text-sm  font-normal text-white disabled:bg-gray-600"
               type="submit"
+              disabled={isLoading}
             >
               Continue
             </button>
