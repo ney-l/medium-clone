@@ -1,9 +1,9 @@
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'
-import { EmailIcon } from '../icons/EmailIcon'
-import { FacebookIcon } from '../icons/FacebookIcon'
-import { GoogleIcon } from '../icons/GoogleIcon'
-import { Modal } from '../_common/Modal'
+import { EmailIcon } from '@/components/icons/EmailIcon'
+import { FacebookIcon } from '@/components/icons/FacebookIcon'
+import { GoogleIcon } from '@/components/icons/GoogleIcon'
+import { Modal } from '@/components/_common/Modal'
 import { EmailSignup } from './EmailSignup'
 
 interface Provider {
