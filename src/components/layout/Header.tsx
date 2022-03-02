@@ -43,11 +43,9 @@ export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
         <div className="flex items-center space-x-5">
           {!isAuthenticated && (
             <>
-              <Link href="/signin">
-                <a className="text-green-600">Sign In</a>
-              </Link>
+              <button className="b-0  text-black">Sign In</button>
               <button
-                className="rounded-full border border-green-600 px-4 py-1 text-green-600"
+                className="rounded-full border bg-black px-4 py-2 text-white"
                 onClick={() => onSignupClick()}
               >
                 Get Started

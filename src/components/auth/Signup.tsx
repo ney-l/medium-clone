@@ -12,7 +12,6 @@ interface Provider {
 }
 
 interface ISignupProps {
-  isShow: boolean
   onCloseClick: () => void
   providers: Provider[]
 }
@@ -23,11 +22,7 @@ const Icons = {
   email: <EmailIcon />,
 }
 
-export function Signup({
-  isShow,
-  onCloseClick,
-  providers,
-}: ISignupProps): JSX.Element {
+export function Signup({ onCloseClick, providers }: ISignupProps): JSX.Element {
   const [showEmailUi, setShowEmailUi] = useState(false)
   const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
 
@@ -41,7 +36,7 @@ export function Signup({
   }
 
   return (
-    <Modal isShow={isShow} onCloseClick={onCloseClick}>
+    <Modal onCloseClick={onCloseClick}>
       <div className="relative flex items-center justify-center sm:h-full md:m-10 md:h-fit">
         <div className="max-w-[316px] rounded-md bg-white py-14 text-center">
           {showEmailUi ? (

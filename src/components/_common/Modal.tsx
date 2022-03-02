@@ -19,18 +19,13 @@ const modal = {
 }
 
 interface IModalProps {
-  isShow: Boolean
   onCloseClick: () => void
   children: React.ReactNode
 }
 
-export function Modal({
-  isShow,
-  onCloseClick,
-  children,
-}: IModalProps): JSX.Element {
+export function Modal({ onCloseClick, children }: IModalProps): JSX.Element {
   return (
-    <Backdrop isShow={isShow}>
+    <Backdrop>
       <motion.div
         variants={modal}
         className="relative flex h-screen w-screen items-center justify-center bg-white drop-shadow-xl md:m-11 md:h-3/5 md:min-h-[800px] md:w-3/4 md:min-w-[700px] md:max-w-2xl md:p-11"

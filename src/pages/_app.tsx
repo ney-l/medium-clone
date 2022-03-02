@@ -18,11 +18,13 @@ function MyApp({
     <SessionProvider session={session}>
       <AnimatePresence>
         <PageLoadingBar />
-        <Signup
-          isShow={isShowSignup}
-          onCloseClick={() => setShowSignup(false)}
-          {...pageProps}
-        />
+        {isShowSignup && (
+          <Signup
+            isShow={isShowSignup}
+            onCloseClick={() => setShowSignup(false)}
+            {...pageProps}
+          />
+        )}
 
         <Header onSignupClick={handleShowSignup} />
         <Component
