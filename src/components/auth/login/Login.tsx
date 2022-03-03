@@ -1,39 +1,18 @@
-import { signIn } from 'next-auth/react'
 import { useState } from 'react'
-import { EmailIcon } from '@/components/icons/EmailIcon'
-import { FacebookIcon } from '@/components/icons/FacebookIcon'
-import { GoogleIcon } from '@/components/icons/GoogleIcon'
-import { Modal } from '@/components/_common/Modal'
-import { EmailAuth } from '../EmailAuth'
 
-interface Provider {
-  id: 'google' | 'facebook' | 'email'
-  name: string
-}
+import { Modal } from '@/components/_common/Modal'
+import { EmailAuth } from '@/components/auth/EmailAuth'
+import { Providers } from '@/components/auth/auth.types'
+import { AuthOptions } from '@/components/auth/AuthOptions'
 
 interface ISignupProps {
   onCloseClick: () => void
-  providers: Provider[]
-}
-
-const Icons = {
-  google: <GoogleIcon />,
-  facebook: <FacebookIcon />,
-  email: <EmailIcon />,
+  providers: Providers
 }
 
 export function Login({ onCloseClick, providers }: ISignupProps): JSX.Element {
   const [showEmailUi, setShowEmailUi] = useState(false)
   const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
-
-  async function handleSignIn(providerId: Provider['id']): Promise<void> {
-    if (providerId !== 'email') {
-      signIn(providerId)
-      return
-    }
-
-    setShowEmailUi(true)
-  }
 
   return (
     <Modal onCloseClick={onCloseClick}>
@@ -52,21 +31,13 @@ export function Login({ onCloseClick, providers }: ISignupProps): JSX.Element {
                 Welcome back.
               </h1>
               <div className="flex flex-col">
-                {providers &&
-                  Object.values(providers)?.map((provider) => (
-                    <button
-                      key={provider.id}
-                      className="my-2 rounded-full border border-gray-400 px-4 py-3 hover:border-gray-600"
-                      onClick={() => handleSignIn(provider.id)}
-                    >
-                      <span className="flex flex-row">
-                        <span className="px-2">{Icons[provider.id]}</span>
-                        <span className="block">
-                          Sign in with {provider.name}
-                        </span>
-                      </span>
-                    </button>
-                  ))}
+                {providers && (
+                  <AuthOptions
+                    providers={providers}
+                    setShowEmailUi={setShowEmailUi}
+                    authType="login"
+                  />
+                )}
                 <div className="mt-10">
                   No account?{' '}
                   <button className="font-bold text-green-600">
