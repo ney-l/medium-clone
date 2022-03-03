@@ -8,9 +8,14 @@ import { AuthOptions } from '@/components/auth/AuthOptions'
 interface ISignupProps {
   onCloseClick: () => void
   providers: Providers
+  onShowSignupClick: () => void
 }
 
-export function Login({ onCloseClick, providers }: ISignupProps): JSX.Element {
+export function Login({
+  onCloseClick,
+  providers,
+  onShowSignupClick,
+}: ISignupProps): JSX.Element {
   const [showEmailUi, setShowEmailUi] = useState(false)
   const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
 
@@ -40,7 +45,10 @@ export function Login({ onCloseClick, providers }: ISignupProps): JSX.Element {
                 )}
                 <div className="mt-10">
                   No account?{' '}
-                  <button className="font-bold text-green-600">
+                  <button
+                    onClick={onShowSignupClick}
+                    className="font-bold text-green-600"
+                  >
                     Create one
                   </button>
                 </div>
@@ -51,7 +59,10 @@ export function Login({ onCloseClick, providers }: ISignupProps): JSX.Element {
       </div>
       <div
         className="absolute bottom-0"
-        style={{ opacity: showCheckInboxUi ? 1 : 0 }}
+        style={{
+          opacity: showCheckInboxUi ? 1 : 0,
+          ...(!showCheckInboxUi && { zIndex: -10 }),
+        }}
       >
         <img src="/images/open-up-ideas.png" />
       </div>

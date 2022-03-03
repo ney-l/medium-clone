@@ -8,9 +8,11 @@ import { Providers } from '@/components/auth/auth.types'
 export function Signup({
   onCloseClick,
   providers,
+  onLoginClick,
 }: {
   onCloseClick: () => void
   providers: Providers
+  onLoginClick: () => void
 }): JSX.Element {
   const [showEmailUi, setShowEmailUi] = useState(false)
   const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
@@ -41,7 +43,12 @@ export function Signup({
                 )}
                 <div className="mt-10">
                   Already have an account?{' '}
-                  <button className="font-bold text-green-600">Sign in</button>
+                  <button
+                    onClick={onLoginClick}
+                    className="py-5 font-bold text-green-600"
+                  >
+                    Sign in
+                  </button>
                 </div>
               </div>
             </>
@@ -50,7 +57,10 @@ export function Signup({
       </div>
       <div
         className="absolute bottom-0"
-        style={{ opacity: showCheckInboxUi ? 1 : 0 }}
+        style={{
+          opacity: showCheckInboxUi ? 1 : 0,
+          ...(!showCheckInboxUi && { zIndex: -10 }),
+        }}
       >
         <img src="/images/open-up-ideas.png" />
       </div>

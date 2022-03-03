@@ -14,34 +14,47 @@ function MyApp({
   const [isShowSignup, setShowSignup] = useState(false)
   const [isShowLogin, setShowLogin] = useState(false)
 
-  const handleShowSignup = () => setShowSignup(true)
+  const showLogin = () => {
+    hide()
+    setShowLogin(true)
+  }
+
+  const showSignup = () => {
+    hide()
+    setShowSignup(true)
+  }
+
+  const hide = () => {
+    setShowLogin(false)
+    setShowSignup(false)
+  }
+
   return (
     <SessionProvider session={session}>
       <PageLoadingBar />
       {isShowSignup && (
         <Signup
           isShow={isShowSignup}
-          onCloseClick={() => setShowSignup(false)}
+          onCloseClick={hide}
+          onLoginClick={showLogin}
           {...pageProps}
         />
       )}
 
       {isShowLogin && (
         <Login
-          onCloseClick={() => setShowLogin(false)}
+          onCloseClick={hide}
           providers={pageProps.providers}
+          onShowSignupClick={showSignup}
         />
       )}
 
-      <Header
-        onSignupClick={handleShowSignup}
-        onLoginClick={() => setShowLogin(true)}
-      />
+      <Header onSignupClick={showSignup} onLoginClick={showLogin} />
       <Component
         {...pageProps}
         isShowSignup={isShowSignup}
-        handleShowSignup={() => setShowSignup(true)}
-        handleHideSignup={() => setShowSignup(false)}
+        handleShowSignup={setShowLogin}
+        handleHideSignup={hide}
       />
       <Footer />
     </SessionProvider>
