@@ -1,7 +1,5 @@
-import { useState, Dispatch, SetStateAction } from 'react'
-
 import { EmailAuth } from '@/components/auth/EmailAuth'
-import { Providers } from '@/components/auth/auth.types'
+import { Providers, DispatchStateAction } from '@/components/auth/auth.types'
 import { AuthOptions } from '@/components/auth/AuthOptions'
 
 interface ISignupProps {
@@ -9,18 +7,20 @@ interface ISignupProps {
   providers: Providers
   onShowSignupClick: () => void
   showCheckInboxUi: boolean
-  setShowCheckInboxUi: Dispatch<SetStateAction<boolean>>
+  setShowCheckInboxUi: DispatchStateAction
+  showEmailUi: boolean
+  setShowEmailUi: DispatchStateAction
 }
 
 export function Login({
   showCheckInboxUi,
   onCloseClick,
   providers,
+  showEmailUi,
+  setShowEmailUi,
   onShowSignupClick,
   setShowCheckInboxUi,
 }: ISignupProps): JSX.Element {
-  const [showEmailUi, setShowEmailUi] = useState(false)
-
   return (
     <>
       {showEmailUi ? (

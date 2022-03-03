@@ -20,6 +20,7 @@ export function AuthWrapper({
   onShowSignupClick: () => void
 }) {
   const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
+  const [showEmailUi, setShowEmailUi] = useState(false)
 
   if (authType !== 'login' && authType !== 'register') return null
 
@@ -34,6 +35,8 @@ export function AuthWrapper({
               onShowSignupClick={onShowSignupClick}
               showCheckInboxUi={showCheckInboxUi}
               setShowCheckInboxUi={setShowCheckInboxUi}
+              showEmailUi={showEmailUi}
+              setShowEmailUi={setShowEmailUi}
             />
           )}
           {authType === 'register' && (
@@ -43,6 +46,8 @@ export function AuthWrapper({
               onShowLoginClick={onShowLoginClick}
               showCheckInboxUi={showCheckInboxUi}
               setShowCheckInboxUi={setShowCheckInboxUi}
+              showEmailUi={showEmailUi}
+              setShowEmailUi={setShowEmailUi}
             />
           )}
         </div>

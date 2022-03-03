@@ -5,42 +5,27 @@ import { SessionProvider } from 'next-auth/react'
 import '@/styles/globals.css'
 import { Footer, Header, PageLoadingBar } from '@/components/layout'
 import { AuthWrapper } from '@/components/auth/AuthWrapper'
+import { AuthType } from '@/components/auth/auth.types'
 
 function MyApp({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps): JSX.Element {
-  const [isShowSignup, setShowSignup] = useState(false)
-  const [isShowLogin, setShowLogin] = useState(false)
+  const [authType, setAuthType] = useState<AuthType | null>(null)
 
-  const showLogin = () => {
-    hide()
-    setShowLogin(true)
-  }
+  const showLogin = () => setAuthType('login')
 
-  const showSignup = () => {
-    hide()
-    setShowSignup(true)
-  }
+  const showSignup = () => setAuthType('register')
 
-  const hide = () => {
-    setShowLogin(false)
-    setShowSignup(false)
-  }
-
-  const getAuthType = () => {
-    if (isShowLogin) return 'login'
-    if (isShowSignup) return 'register'
-    return undefined
-  }
+  const hide = () => setAuthType(null)
 
   return (
     <SessionProvider session={session}>
       <PageLoadingBar />
 
-      {getAuthType() && (
+      {authType && (
         <AuthWrapper
-          authType={getAuthType()}
+          authType={authType}
           onCloseClick={hide}
           onShowLoginClick={showLogin}
           onShowSignupClick={showSignup}
@@ -49,12 +34,7 @@ function MyApp({
       )}
 
       <Header onSignupClick={showSignup} onLoginClick={showLogin} />
-      <Component
-        {...pageProps}
-        isShowSignup={isShowSignup}
-        handleShowSignup={setShowLogin}
-        handleHideSignup={hide}
-      />
+      <Component {...pageProps} />
       <Footer />
     </SessionProvider>
   )

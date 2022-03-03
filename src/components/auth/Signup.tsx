@@ -1,24 +1,24 @@
-import { useState, Dispatch, SetStateAction } from 'react'
-
 import { EmailAuth } from '@/components/auth/EmailAuth'
 import { AuthOptions } from '@/components/auth/AuthOptions'
-import { Providers } from '@/components/auth/auth.types'
+import { Providers, DispatchStateAction } from '@/components/auth/auth.types'
 
 export function Signup({
   showCheckInboxUi,
   providers,
+  showEmailUi,
+  setShowEmailUi,
   onCloseClick,
   onShowLoginClick,
   setShowCheckInboxUi,
 }: {
   showCheckInboxUi: boolean
   providers: Providers
+  showEmailUi: boolean
+  setShowEmailUi: DispatchStateAction
   onCloseClick: () => void
   onShowLoginClick: () => void
-  setShowCheckInboxUi: Dispatch<SetStateAction<boolean>>
+  setShowCheckInboxUi: DispatchStateAction
 }): JSX.Element {
-  const [showEmailUi, setShowEmailUi] = useState(false)
-
   return (
     <>
       {showEmailUi ? (
