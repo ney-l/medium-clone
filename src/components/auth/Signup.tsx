@@ -1,29 +1,17 @@
-import { signIn } from 'next-auth/react'
 import { useState } from 'react'
-import { EmailIcon } from '@/components/icons/EmailIcon'
-import { FacebookIcon } from '@/components/icons/FacebookIcon'
-import { GoogleIcon } from '@/components/icons/GoogleIcon'
+
 import { Modal } from '@/components/_common/Modal'
-import { EmailAuth } from './EmailAuth'
-import { AuthOptions } from './AuthOptions'
+import { EmailAuth } from '@/components/auth/EmailAuth'
+import { AuthOptions } from '@/components/auth/AuthOptions'
+import { Providers } from '@/components/auth/auth.types'
 
-interface Provider {
-  id: 'google' | 'facebook' | 'email'
-  name: string
-}
-
-interface ISignupProps {
+export function Signup({
+  onCloseClick,
+  providers,
+}: {
   onCloseClick: () => void
-  providers: Provider[]
-}
-
-const Icons = {
-  google: <GoogleIcon />,
-  facebook: <FacebookIcon />,
-  email: <EmailIcon />,
-}
-
-export function Signup({ onCloseClick, providers }: ISignupProps): JSX.Element {
+  providers: Providers
+}): JSX.Element {
   const [showEmailUi, setShowEmailUi] = useState(false)
   const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
 
