@@ -99,7 +99,7 @@ export function EmailAuth({
 
       <button
         className="my-2 rounded-full border border-gray-400 bg-black px-4 py-3 text-white hover:border-gray-600"
-        onClick={() => onCloseClick()}
+        onClick={onCloseClick}
       >
         Ok
       </button>

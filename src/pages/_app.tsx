@@ -3,9 +3,8 @@ import type { AppProps } from 'next/app'
 import { SessionProvider } from 'next-auth/react'
 
 import '@/styles/globals.css'
-import { Signup } from '@/components/auth/Signup'
 import { Footer, Header, PageLoadingBar } from '@/components/layout'
-import { Login } from '@/components/auth/login/Login'
+import { AuthWrapper } from '@/components/auth/AuthWrapper'
 
 function MyApp({
   Component,
@@ -29,23 +28,23 @@ function MyApp({
     setShowSignup(false)
   }
 
+  const getAuthType = () => {
+    if (isShowLogin) return 'login'
+    if (isShowSignup) return 'register'
+    return undefined
+  }
+
   return (
     <SessionProvider session={session}>
       <PageLoadingBar />
-      {isShowSignup && (
-        <Signup
-          isShow={isShowSignup}
+
+      {getAuthType() && (
+        <AuthWrapper
+          authType={getAuthType()}
           onCloseClick={hide}
           onLoginClick={showLogin}
-          {...pageProps}
-        />
-      )}
-
-      {isShowLogin && (
-        <Login
-          onCloseClick={hide}
-          providers={pageProps.providers}
           onShowSignupClick={showSignup}
+          providers={pageProps.providers}
         />
       )}
 
