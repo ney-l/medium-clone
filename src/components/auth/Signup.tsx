@@ -1,24 +1,21 @@
 import { EmailAuth } from '@/components/auth/EmailAuth'
 import { AuthOptions } from '@/components/auth/AuthOptions'
-import { Providers, DispatchStateAction } from '@/components/auth/auth.types'
+import { DispatchStateAction } from '@/components/auth/auth.types'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/authContext'
 
 export function Signup({
   showCheckInboxUi,
-  providers,
   showEmailUi,
   setShowEmailUi,
-  onCloseClick,
-  onShowLoginClick,
   setShowCheckInboxUi,
 }: {
   showCheckInboxUi: boolean
-  providers: Providers
   showEmailUi: boolean
   setShowEmailUi: DispatchStateAction
-  onCloseClick: () => void
-  onShowLoginClick: () => void
   setShowCheckInboxUi: DispatchStateAction
 }): JSX.Element {
+  const { providers, onCloseClick, onShowLoginClick } = useContext(AuthContext)
   return (
     <>
       {showEmailUi ? (

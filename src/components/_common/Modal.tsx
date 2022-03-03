@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 
 import { CloseIcon } from '@/components/icons/CloseIcon'
 import { Backdrop } from '@/components/layout/Backdrop'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/authContext'
 
 const modal = {
   hidden: { opacity: 0, scale: 0.5 },
@@ -19,11 +21,12 @@ const modal = {
 }
 
 interface IModalProps {
-  onCloseClick: () => void
   children: React.ReactNode
 }
 
-export function Modal({ onCloseClick, children }: IModalProps): JSX.Element {
+export function Modal({ children }: IModalProps): JSX.Element {
+  const { onCloseClick } = useContext(AuthContext)
+
   return (
     <Backdrop>
       <motion.div

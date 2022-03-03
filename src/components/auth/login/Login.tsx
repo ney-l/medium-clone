@@ -1,11 +1,11 @@
+import { useContext } from 'react'
+
 import { EmailAuth } from '@/components/auth/EmailAuth'
-import { Providers, DispatchStateAction } from '@/components/auth/auth.types'
+import { DispatchStateAction } from '@/components/auth/auth.types'
 import { AuthOptions } from '@/components/auth/AuthOptions'
+import { AuthContext } from '@/context/authContext'
 
 interface ISignupProps {
-  onCloseClick: () => void
-  providers: Providers
-  onShowSignupClick: () => void
   showCheckInboxUi: boolean
   setShowCheckInboxUi: DispatchStateAction
   showEmailUi: boolean
@@ -14,13 +14,11 @@ interface ISignupProps {
 
 export function Login({
   showCheckInboxUi,
-  onCloseClick,
-  providers,
   showEmailUi,
   setShowEmailUi,
-  onShowSignupClick,
   setShowCheckInboxUi,
 }: ISignupProps): JSX.Element {
+  const { providers, onCloseClick, onShowSignupClick } = useContext(AuthContext)
   return (
     <>
       {showEmailUi ? (

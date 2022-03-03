@@ -2,18 +2,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useSession, signOut } from 'next-auth/react'
 import { Avatar } from '../_common/Avatar'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/authContext'
 
-interface IHeaderProps {
-  onSignupClick: () => void
-  onLoginClick: () => void
-}
-
-export function Header({
-  onSignupClick,
-  onLoginClick,
-}: IHeaderProps): JSX.Element {
+export function Header(): JSX.Element {
   const { data: session, status } = useSession()
   const isAuthenticated = status === 'authenticated'
+  const { onShowSignupClick, onShowLoginClick } = useContext(AuthContext)
 
   return (
     <header className=" bg-blue-200 p-1">
@@ -49,13 +44,13 @@ export function Header({
             <>
               <button
                 className="b-0  text-black"
-                onClick={() => onLoginClick()}
+                onClick={() => onShowLoginClick()}
               >
                 Sign In
               </button>
               <button
                 className="rounded-full border bg-black px-4 py-2 text-white"
-                onClick={() => onSignupClick()}
+                onClick={() => onShowSignupClick()}
               >
                 Get Started
               </button>
