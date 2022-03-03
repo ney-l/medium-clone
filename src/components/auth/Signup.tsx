@@ -5,16 +5,16 @@ import { AuthOptions } from '@/components/auth/AuthOptions'
 import { Providers } from '@/components/auth/auth.types'
 
 export function Signup({
-  onCloseClick,
-  providers,
-  onLoginClick,
   showCheckInboxUi,
+  providers,
+  onCloseClick,
+  onShowLoginClick,
   setShowCheckInboxUi,
 }: {
-  onCloseClick: () => void
-  providers: Providers
-  onLoginClick: () => void
   showCheckInboxUi: boolean
+  providers: Providers
+  onCloseClick: () => void
+  onShowLoginClick: () => void
   setShowCheckInboxUi: Dispatch<SetStateAction<boolean>>
 }): JSX.Element {
   const [showEmailUi, setShowEmailUi] = useState(false)
@@ -44,7 +44,7 @@ export function Signup({
             <div className="mt-10">
               Already have an account?{' '}
               <button
-                onClick={onLoginClick}
+                onClick={onShowLoginClick}
                 className="py-5 font-bold text-green-600"
               >
                 Sign in

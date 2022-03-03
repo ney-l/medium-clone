@@ -42,7 +42,7 @@ function MyApp({
         <AuthWrapper
           authType={getAuthType()}
           onCloseClick={hide}
-          onLoginClick={showLogin}
+          onShowLoginClick={showLogin}
           onShowSignupClick={showSignup}
           providers={pageProps.providers}
         />

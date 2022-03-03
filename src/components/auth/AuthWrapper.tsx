@@ -7,17 +7,17 @@ import { Providers } from '@/components/auth/auth.types'
 import { Signup } from './Signup'
 
 export function AuthWrapper({
-  onCloseClick,
   authType,
   providers,
+  onCloseClick,
+  onShowLoginClick,
   onShowSignupClick,
-  onLoginClick,
 }: {
-  onCloseClick: () => void
   authType?: AuthType
   providers: Providers
+  onCloseClick: () => void
+  onShowLoginClick: () => void
   onShowSignupClick: () => void
-  onLoginClick: () => void
 }) {
   const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
 
@@ -40,7 +40,7 @@ export function AuthWrapper({
             <Signup
               onCloseClick={onCloseClick}
               providers={providers}
-              onLoginClick={onLoginClick}
+              onShowLoginClick={onShowLoginClick}
               showCheckInboxUi={showCheckInboxUi}
               setShowCheckInboxUi={setShowCheckInboxUi}
             />
