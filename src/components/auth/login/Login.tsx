@@ -4,7 +4,7 @@ import { EmailIcon } from '@/components/icons/EmailIcon'
 import { FacebookIcon } from '@/components/icons/FacebookIcon'
 import { GoogleIcon } from '@/components/icons/GoogleIcon'
 import { Modal } from '@/components/_common/Modal'
-import { EmailSignup as EmailAuth } from '../EmailSignup'
+import { EmailAuth } from '../EmailAuth'
 
 interface Provider {
   id: 'google' | 'facebook' | 'email'

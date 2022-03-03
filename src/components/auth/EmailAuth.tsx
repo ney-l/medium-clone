@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 
-export function EmailSignup({
+export function EmailAuth({
   askToCheckEmail,
   setShowCheckInboxUi,
   onCloseClick,

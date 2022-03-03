@@ -4,7 +4,7 @@ import { EmailIcon } from '@/components/icons/EmailIcon'
 import { FacebookIcon } from '@/components/icons/FacebookIcon'
 import { GoogleIcon } from '@/components/icons/GoogleIcon'
 import { Modal } from '@/components/_common/Modal'
-import { EmailSignup } from './EmailSignup'
+import { EmailAuth } from './EmailAuth'
 
 interface Provider {
   id: 'google' | 'facebook' | 'email'
@@ -40,7 +40,7 @@ export function Signup({ onCloseClick, providers }: ISignupProps): JSX.Element {
       <div className="relative flex items-center justify-center sm:h-full md:m-10 md:h-fit">
         <div className="max-w-[316px] rounded-md bg-white py-14 text-center">
           {showEmailUi ? (
-            <EmailSignup
+            <EmailAuth
               onCloseClick={onCloseClick}
               askToCheckEmail={showCheckInboxUi}
               setShowCheckInboxUi={setShowCheckInboxUi}
