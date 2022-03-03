@@ -5,12 +5,14 @@ import { SessionProvider } from 'next-auth/react'
 import '@/styles/globals.css'
 import { Signup } from '@/components/auth/Signup'
 import { Footer, Header, PageLoadingBar } from '@/components/layout'
+import { Login } from '@/components/auth/login/Login'
 
 function MyApp({
   Component,
   pageProps: { session, ...pageProps },
 }: AppProps): JSX.Element {
   const [isShowSignup, setShowSignup] = useState(false)
+  const [isShowLogin, setShowLogin] = useState(false)
 
   const handleShowSignup = () => setShowSignup(true)
   return (
@@ -24,7 +26,17 @@ function MyApp({
         />
       )}
 
-      <Header onSignupClick={handleShowSignup} />
+      {isShowLogin && (
+        <Login
+          onCloseClick={() => setShowLogin(false)}
+          providers={pageProps.providers}
+        />
+      )}
+
+      <Header
+        onSignupClick={handleShowSignup}
+        onLoginClick={() => setShowLogin(true)}
+      />
       <Component
         {...pageProps}
         isShowSignup={isShowSignup}

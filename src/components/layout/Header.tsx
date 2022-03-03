@@ -5,9 +5,13 @@ import { Avatar } from '../_common/Avatar'
 
 interface IHeaderProps {
   onSignupClick: () => void
+  onLoginClick: () => void
 }
 
-export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
+export function Header({
+  onSignupClick,
+  onLoginClick,
+}: IHeaderProps): JSX.Element {
   const { data: session, status } = useSession()
   const isAuthenticated = status === 'authenticated'
 
@@ -43,7 +47,12 @@ export function Header({ onSignupClick }: IHeaderProps): JSX.Element {
         <div className="flex items-center space-x-5">
           {!isAuthenticated && (
             <>
-              <button className="b-0  text-black">Sign In</button>
+              <button
+                className="b-0  text-black"
+                onClick={() => onLoginClick()}
+              >
+                Sign In
+              </button>
               <button
                 className="rounded-full border bg-black px-4 py-2 text-white"
                 onClick={() => onSignupClick()}
