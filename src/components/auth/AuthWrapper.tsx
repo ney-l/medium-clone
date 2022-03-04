@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 
 import { Modal } from '@/components/_common/Modal'
 import { Login } from '@/components/auth/login/Login'
@@ -6,9 +6,7 @@ import { Signup } from './Signup'
 import { AuthContext } from '@/context/authContext'
 
 export function AuthWrapper() {
-  const { authType } = useContext(AuthContext)
-  const [showCheckInboxUi, setShowCheckInboxUi] = useState(false)
-  const [showEmailUi, setShowEmailUi] = useState(false)
+  const { authType, showCheckInboxUi } = useContext(AuthContext)
 
   if (authType !== 'login' && authType !== 'register') return null
 
@@ -16,22 +14,8 @@ export function AuthWrapper() {
     <Modal>
       <div className="relative flex items-center justify-center sm:h-full md:m-10 md:h-fit">
         <div className="max-w-[316px] rounded-md bg-white py-14 text-center">
-          {authType === 'login' && (
-            <Login
-              showCheckInboxUi={showCheckInboxUi}
-              setShowCheckInboxUi={setShowCheckInboxUi}
-              showEmailUi={showEmailUi}
-              setShowEmailUi={setShowEmailUi}
-            />
-          )}
-          {authType === 'register' && (
-            <Signup
-              showCheckInboxUi={showCheckInboxUi}
-              setShowCheckInboxUi={setShowCheckInboxUi}
-              showEmailUi={showEmailUi}
-              setShowEmailUi={setShowEmailUi}
-            />
-          )}
+          {authType === 'login' && <Login />}
+          {authType === 'register' && <Signup />}
         </div>
       </div>
 

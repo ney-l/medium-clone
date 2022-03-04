@@ -1,19 +1,16 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { signIn } from 'next-auth/react'
+import { AuthContext } from '@/context/authContext'
 
-export function EmailAuth({
-  askToCheckEmail,
-  setShowCheckInboxUi,
-  onCloseClick,
-  setShowEmailUi,
-}: {
-  askToCheckEmail: boolean
-  setShowCheckInboxUi: (show: boolean) => void
-  onCloseClick: () => void
-  setShowEmailUi: (show: boolean) => void
-}): JSX.Element {
+export function EmailAuth(): JSX.Element {
   const [email, setEmail] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const {
+    onCloseClick,
+    showCheckInboxUi,
+    setShowCheckInboxUi,
+    setShowEmailUi,
+  } = useContext(AuthContext)
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault()
@@ -29,14 +26,14 @@ export function EmailAuth({
     setIsLoading(false)
 
     if (ok) {
-      setShowCheckInboxUi(true)
+      setShowCheckInboxUi?.(true)
       setEmail(email)
     }
 
     console.log(error)
   }
 
-  if (!askToCheckEmail) {
+  if (!showCheckInboxUi) {
     return (
       <>
         <h1 className="mb-8 font-serif text-2xl font-bold text-black">
@@ -66,7 +63,7 @@ export function EmailAuth({
         </div>
         <div className="mt-10 flex w-full justify-center">
           <button
-            onClick={() => setShowEmailUi(false)}
+            onClick={() => setShowEmailUi?.(false)}
             className="flex justify-center text-center font-bold text-green-600"
           >
             <svg

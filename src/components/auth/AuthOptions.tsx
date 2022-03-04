@@ -3,7 +3,9 @@ import { signIn } from 'next-auth/react'
 import { EmailIcon } from '@/components/icons/EmailIcon'
 import { FacebookIcon } from '@/components/icons/FacebookIcon'
 import { GoogleIcon } from '@/components/icons/GoogleIcon'
-import { AuthType, Provider } from '@/components/auth/auth.types'
+import { Provider } from '@/components/auth/auth.types'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/authContext'
 
 const Icons = {
   google: <GoogleIcon />,
@@ -11,22 +13,15 @@ const Icons = {
   email: <EmailIcon />,
 }
 
-export function AuthOptions({
-  providers,
-  authType,
-  setShowEmailUi,
-}: {
-  providers: Provider[]
-  authType: AuthType
-  setShowEmailUi: (isShow: boolean) => void
-}) {
+export function AuthOptions() {
+  const { authType, providers, setShowEmailUi } = useContext(AuthContext)
   async function handleSignIn(providerId: Provider['id']): Promise<void> {
     if (providerId !== 'email') {
       signIn(providerId)
       return
     }
 
-    setShowEmailUi(true)
+    setShowEmailUi?.(true)
   }
   return (
     <>
