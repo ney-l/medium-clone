@@ -16,7 +16,15 @@ export default function Home({ posts }: IPosts): JSX.Element {
 
       <Banner />
 
-      <Posts posts={posts} />
+      <div className="md:flex md:flex-row-reverse md:justify-around">
+        <div className="bg-red-300 text-center">categories</div>
+
+        <div className="flex">
+          <div className="mx-auto grid max-w-7xl bg-white p-2">
+            <Posts posts={posts} />
+          </div>
+        </div>
+      </div>
     </>
   )
 }

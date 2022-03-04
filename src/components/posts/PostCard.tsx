@@ -1,4 +1,5 @@
 import { IPost } from '@/typings'
+import { StarIcon } from '../icons/StarIcon'
 
 interface PostCardProps extends IPost {
   imageUrl: string
@@ -13,22 +14,34 @@ export function PostCard({
   description,
 }: PostCardProps): JSX.Element {
   return (
-    <div className="cursor-pointer rounded-lg border transition-transform duration-200 ease-in-out hover:shadow-sm">
-      <img className="h-60 w-full object-cover" src={imageUrl} alt={title} />
-      <div className="flex justify-between bg-white p-5">
-        <div>
-          <p className="font-serif text-lg font-bold">{title}</p>
-          <p className="text-xs">
-            {description} by {author.name}
-          </p>
+    <>
+      <div className="space-between my-2 flex max-w-2xl justify-between py-2">
+        <div className="p-2">
+          <div className="flex items-center">
+            <img
+              className="h-7 w-7 rounded-full"
+              src={authorImageUrl}
+              alt="Author"
+            />
+            <p className="ml-2 text-xs">{author.name}</p>
+          </div>
+          <div>
+            <p className="pt-1 font-serif text-lg font-bold">{title}</p>
+            <p className="text-sm text-gray-500">{description}</p>
+          </div>
+          <div className="flex items-center pt-2 text-gray-500">
+            <p className="text-xs">Mar 4</p>
+            <span className="px-1">·</span>
+            <p className="text-xs">4 min read</p>
+            <span className="px-1">·</span>
+            <p className="text-xs">Ukraine</p>
+            <StarIcon classNames="ml-1 fill-gray-500" />
+          </div>
         </div>
-
-        <img
-          className="h-12 w-12 rounded-full"
-          src={authorImageUrl}
-          alt="Author"
-        />
+        <div>
+          <img className="h-28 w-36" src={imageUrl} alt={title} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
