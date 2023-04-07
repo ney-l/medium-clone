@@ -8,7 +8,7 @@ export function Comment({ comment }: ICommentProps) {
   return (
     <div>
       <p>
-        <span className="text-yellow-500">{comment.name}:</span>
+        <span className="pr-1 text-yellow-500">{comment.name}:</span>
         {comment.comment}
       </p>
     </div>
