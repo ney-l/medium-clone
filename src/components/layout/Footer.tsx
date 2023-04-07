@@ -7,7 +7,7 @@ export function Footer() {
         target="_blank"
         rel="noopener noreferrer"
       >
-        Built By Neha Lanjewar
+        Built With ❤️ By Neha Demirci
       </a>
     </footer>
   )
