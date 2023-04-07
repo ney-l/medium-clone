@@ -2,9 +2,9 @@ import Link from 'next/link'
 
 import { PostCard } from '@/components/posts'
 import { IPosts } from '@/typings'
-import { urlFor } from '@/config/cms'
+import { urlFor } from '@/lib/cms'
 
-export function Posts({ posts }: IPosts) {
+export function Posts({ posts }: IPosts): JSX.Element {
   return (
     <div className="mx-auto grid max-w-7xl grid-cols-1 gap-3 bg-white p-2 sm:grid-cols-2 md:gap-6 md:p-6 lg:grid-cols-3">
       {posts.map((post) => (

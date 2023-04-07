@@ -11,7 +11,7 @@ export function PostCard({
   title,
   author,
   description,
-}: PostCardProps) {
+}: PostCardProps): JSX.Element {
   return (
     <div className="cursor-pointer rounded-lg border transition-transform duration-200 ease-in-out hover:shadow-sm">
       <img className="h-60 w-full object-cover" src={imageUrl} alt={title} />

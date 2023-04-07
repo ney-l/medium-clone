@@ -1,9 +1,10 @@
 import PortableText from 'react-portable-text'
 
-import { urlFor } from '@/config/cms'
+import { urlFor } from '@/lib/cms'
 import { IPostProps } from '@/typings'
+import React from 'react'
 
-export function Post({ post }: IPostProps) {
+export function Post({ post }: IPostProps): JSX.Element {
   return (
     <>
       <img
@@ -41,10 +42,16 @@ export function Post({ post }: IPostProps) {
               h2: (props: any) => (
                 <h1 className="my-5 text-xl font-bold" {...props} />
               ),
-              li: ({ children }: any) => (
+              li: ({ children }: { children: React.ReactNode }) => (
                 <li className="ml-4 list-disc">{children} </li>
               ),
-              link: ({ href, children }: any) => (
+              link: ({
+                href,
+                children,
+              }: {
+                href: string
+                children: React.ReactNode
+              }) => (
                 <a href={href} className="text-blue-500 hover:underline">
                   {children}{' '}
                 </a>

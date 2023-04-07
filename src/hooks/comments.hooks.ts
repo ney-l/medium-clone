@@ -4,14 +4,24 @@ interface IFormFields {
   name: { value: string }
   email: { value: string }
   comment: { value: string }
-  reset: Function
+  reset: () => void
 }
 
-export function useCreateComment(postId: string) {
-  const [isLoading, setIsLoading] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-  const [error, setError] = useState('')
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+interface ICreateCommentHook {
+  isLoading: boolean
+  isSuccess: boolean
+  error: string
+  onSubmit: React.FormEventHandler
+}
+
+export function useCreateComment(postId: string): ICreateCommentHook {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isSuccess, setIsSuccess] = useState<boolean>(false)
+  const [error, setError] = useState<string>('')
+
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> {
     setError('')
     setIsLoading(true)
 

@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 
 import { CloseIcon } from '@/components/icons/CloseIcon'
 import { Backdrop } from '@/components/layout/Backdrop'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/authContext'
 
 const modal = {
   hidden: { opacity: 0, scale: 0.5 },
@@ -19,20 +21,26 @@ const modal = {
 }
 
 interface IModalProps {
-  isShow: Boolean
-  onCloseClick: Function
-  children: JSX.Element | [JSX.Element]
+  children: React.ReactNode
 }
 
-export function Modal({ isShow, onCloseClick, children }: IModalProps) {
+export function Modal({ children }: IModalProps): JSX.Element {
+  const { onCloseClick } = useContext(AuthContext)
+
   return (
-    <Backdrop isShow={isShow}>
-      <div className="absolute right-8 top-5">
-        <button onClick={() => onCloseClick()}>
+    <Backdrop>
+      <motion.div
+        variants={modal}
+        className="relative flex h-screen w-screen items-center justify-center bg-white drop-shadow-xl md:m-11 md:h-3/5 md:min-h-[800px] md:w-3/4 md:min-w-[700px] md:max-w-2xl md:p-11"
+      >
+        <button
+          className="absolute  right-5 top-5"
+          onClick={() => onCloseClick()}
+        >
           <CloseIcon />
         </button>
-      </div>
-      <motion.div variants={modal}>{children}</motion.div>
+        {children}
+      </motion.div>
     </Backdrop>
   )
 }

@@ -1,4 +1,4 @@
-export function CloseIcon() {
+export function CloseIcon(): JSX.Element {
   return (
     <svg width="29" height="29">
       <path

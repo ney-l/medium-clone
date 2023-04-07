@@ -1,10 +1,11 @@
+import { useContext } from 'react'
+
 import { EmailAuth } from '@/components/auth/EmailAuth'
 import { AuthOptions } from '@/components/auth/AuthOptions'
-import { useContext } from 'react'
 import { AuthContext } from '@/context/authContext'
 
-export function Signup(): JSX.Element {
-  const { providers, onShowLoginClick, showEmailUi } = useContext(AuthContext)
+export function Login() {
+  const { providers, onShowSignupClick, showEmailUi } = useContext(AuthContext)
 
   return (
     <>
@@ -13,17 +14,17 @@ export function Signup(): JSX.Element {
       ) : (
         <>
           <h1 className="mb-20 font-serif text-2xl font-bold text-black">
-            Join Medium.
+            Welcome back.
           </h1>
           <div className="flex flex-col">
             {providers && <AuthOptions />}
             <div className="mt-10">
-              Already have an account?{' '}
+              No account?{' '}
               <button
-                onClick={onShowLoginClick}
-                className="py-5 font-bold text-green-600"
+                onClick={onShowSignupClick}
+                className="font-bold text-green-600"
               >
-                Sign in
+                Create one
               </button>
             </div>
           </div>

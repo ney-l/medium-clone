@@ -1,4 +1,5 @@
-import { nextCmsClient } from '@/config/cms'
+import { nextCmsClient } from '@/lib/cms'
+import { IPosts } from '@/typings'
 
 export async function getPost(slug: string) {
   const query = `
@@ -29,7 +30,9 @@ export async function getPost(slug: string) {
   return post
 }
 
-export async function getPostSlugs() {
+type PostsWithSlug = [{ _id: string; slug: { current: string } }]
+
+export async function getPostSlugs(): Promise<PostsWithSlug> {
   const query = `
     *[_type == "post"] {
       slug {
@@ -42,7 +45,7 @@ export async function getPostSlugs() {
   return posts
 }
 
-export async function getPosts() {
+export async function getPosts(): Promise<IPosts> {
   const query = `
   *[_type == "post"] {
       _id,

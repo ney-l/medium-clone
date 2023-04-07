@@ -1,46 +1,27 @@
 import Head from 'next/head'
 import { getProviders } from 'next-auth/react'
-import { useState } from 'react'
 
-import { IPost } from '@/typings'
-import { Header, Footer, Banner } from '@/components/layout'
+import { IPosts } from '@/typings'
+import { Banner } from '@/components/layout'
 import { Posts } from '@/components/posts'
 import { getPosts } from '@/queries/posts'
-import { Signup } from '@/components/auth/Signup'
+import { GetServerSideProps } from 'next'
 
-interface IHomeProps {
-  posts: [IPost]
-  providers: [object]
-}
-
-export default function Home({ posts, providers }: IHomeProps) {
-  const [showSignup, setShowSignup] = useState(false)
-
+export default function Home({ posts }: IPosts): JSX.Element {
   return (
     <>
-      <Signup isShow={showSignup} onCloseClick={() => setShowSignup(false)} />
+      <Head>
+        <title>Medium Clone - Where good ideas find you.</title>
+      </Head>
 
-      {!showSignup && (
-        <>
-          <Head>
-            <title>Medium Clone - Where good ideas find you.</title>
-          </Head>
+      <Banner />
 
-          <>
-            <Header onSignupClick={() => setShowSignup(true)} />
-            <Banner />
-
-            <Posts posts={posts} />
-          </>
-
-          <Footer />
-        </>
-      )}
+      <Posts posts={posts} />
     </>
   )
 }
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const providers = await getProviders()
 
   const posts = await getPosts()

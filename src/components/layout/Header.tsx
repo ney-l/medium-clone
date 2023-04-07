@@ -1,28 +1,30 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession, signOut } from 'next-auth/react'
 import { Avatar } from '../_common/Avatar'
+import { useContext } from 'react'
+import { AuthContext } from '@/context/authContext'
 
-interface IHeaderProps {
-  onSignupClick: Function
-}
-
-export function Header({ onSignupClick }: IHeaderProps) {
-  const { data: session } = useSession()
+export function Header(): JSX.Element {
+  const { data: session, status } = useSession()
+  const isAuthenticated = status === 'authenticated'
+  const { onShowSignupClick, onShowLoginClick } = useContext(AuthContext)
 
   return (
     <header className=" bg-blue-200 p-1">
       <div className="mx-auto flex max-w-7xl justify-between">
         <div className="flex items-center space-x-5">
-          <a href="/">
-            <Image
-              src="/medium-logo-full.png"
-              alt="Medium Logo"
-              width={180}
-              height={78}
-              className="cursor-pointer object-contain"
-            />
-          </a>
+          <Link href="/">
+            <a>
+              <Image
+                src="/medium-logo-full.png"
+                alt="Medium Logo"
+                width={180}
+                height={78}
+                className="cursor-pointer object-contain"
+              />
+            </a>
+          </Link>
           <div className="hidden items-center space-x-5 md:inline-flex">
             <Link href="/about">
               <a>About</a>
@@ -38,14 +40,17 @@ export function Header({ onSignupClick }: IHeaderProps) {
           </div>
         </div>
         <div className="flex items-center space-x-5">
-          {!session && (
+          {!isAuthenticated && (
             <>
-              <Link href="/signin">
-                <a className="text-green-600">Sign In</a>
-              </Link>
               <button
-                className="rounded-full border border-green-600 px-4 py-1 text-green-600"
-                onClick={() => onSignupClick()}
+                className="b-0  text-black"
+                onClick={() => onShowLoginClick()}
+              >
+                Sign In
+              </button>
+              <button
+                className="rounded-full border bg-black px-4 py-2 text-white"
+                onClick={() => onShowSignupClick()}
               >
                 Get Started
               </button>
@@ -55,7 +60,10 @@ export function Header({ onSignupClick }: IHeaderProps) {
           {session?.user ? (
             <>
               <Avatar
-                user={{ image: session.user?.image, name: session.user?.name }}
+                user={{
+                  image: session.user?.image,
+                  name: session.user?.name || '',
+                }}
               />
               <button
                 className="rounded-full border  px-4 py-1"

@@ -4,7 +4,7 @@ interface ICommentProps {
   comment: IComment
 }
 
-export function Comment({ comment }: ICommentProps) {
+export function Comment({ comment }: ICommentProps): JSX.Element {
   return (
     <div>
       <p>

@@ -9,7 +9,7 @@ type Data = {
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
-) {
+): Promise<void> {
   if (req.method !== 'POST') {
     return res.status(404).json({ message: 'Not found' })
   }
